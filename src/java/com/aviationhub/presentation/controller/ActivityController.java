@@ -48,29 +48,30 @@ public class ActivityController implements Serializable {
         activity = activityFactory.createActivity(activityType);
 
         if (activityType == ActivityType.JOYFLIGHT) {
-            return "createjoyflight";
+            return "createjoyflight?faces-redirect=true";
         } else {
-            return "createpilottraining";
+            return "createpilottraining?faces-redirect=true";
         }
     }
 
     public String createActivity() {
         ActivityDatabase.create(getActivity());
-        return "activitylist";
+        return "activitylist?faces-redirect=true";
     }
     
     public String updateActivity() {
         ActivityDatabase.update(activity);
-        return "activitylist";
+        return "activitylist?faces-redirect=true";
     }
 
     
     public String deleteActivity() {
         ActivityDatabase.delete(activity.getId());
-        return "activitylist";
+        return "activitylist?faces-redirect=true";
     }
 
     public void loadActivity(int id) {
+        System.out.println("LOADACTIVITY");
         activity = ActivityDatabase.read(id);
     }
 }

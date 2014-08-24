@@ -25,15 +25,14 @@ public class ActivityListController {
     }
 
     
-    public String getDeleteTarget(ActivityType type,int id) {
+    public String getTarget(String commandType, ActivityType type,int id) {
         
         if (type == ActivityType.JOYFLIGHT) {
-            return "deletejoyflight?id="+id;
+            return commandType+"joyflight?faces-redirect=true&id="+id;
         } else if (type == ActivityType.PILOTTRAINING) {
-            return "deletepilottraining?id="+id;
+            return commandType+"pilottraining?faces-redirect=true&id="+id;
         } else {
             return null;
         }
     }
-    
 }

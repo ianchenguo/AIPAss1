@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <f:metadata>
-        <f:viewAction action="#{activityController.loadActivity(param.id)}"/>
+        <!--<f:viewAction action="#{activityController.loadActivity(param.id)}"/>-->
+        <f:event type="preRenderView" listener="#{activityController.loadActivity(param.id)}"/>
     </f:metadata>
     <h:head>
         <title>Delete Activity</title>
