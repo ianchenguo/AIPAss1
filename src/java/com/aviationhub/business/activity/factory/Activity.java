@@ -37,7 +37,6 @@ public abstract class Activity {
      * @return the name
      */
     public String getName() {
-        System.out.println("ACTIVITY IN ACTIVITY CONTROLLER: " + this.getClass());
         return name;
     }
 

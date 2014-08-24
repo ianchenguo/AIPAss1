@@ -8,9 +8,7 @@ package com.aviationhub.presentation.controller;
 import com.aviationhub.business.activity.ActivityDatabase;
 import com.aviationhub.business.activity.factory.*;
 import java.io.Serializable;
-import java.util.Map;
-import javax.enterprise.context.RequestScoped;
-import javax.faces.context.FacesContext;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 /**
@@ -18,10 +16,10 @@ import javax.inject.Named;
  * @author ian
  */
 @Named
-//@SessionScoped
-@RequestScoped
+@SessionScoped
 public class ActivityController implements Serializable {
 
+    private SimpleActivityFactory activityFactory = new SimpleActivityFactory();
     private Activity activity;
     private ActivityType activityType;
 
@@ -43,59 +41,36 @@ public class ActivityController implements Serializable {
      * @return the activity
      */
     public Activity getActivity() {
-        System.out.println("ACTIVITY IN ACTIVITY CONTROLLER IN GETACTIVITY: " + activity.getClass());
         return activity;
     }
 
-    public String chooseActivityType() {
+    public String chooseType() {
+        activity = activityFactory.createActivity(activityType);
+
         if (activityType == ActivityType.JOYFLIGHT) {
-            sessionScope 
-            System.out.println("createjoyflight.xhtml?type=JOYFLIGHT");
-            return "createjoyflight?faces-redirect=true&type=JOYFLIGHT";
-        } else if (activityType == ActivityType.PILOTTRAINING) {
-            return "createpilottraining.xhtml?faces-redirect=true&type=PILOTTRAINING";
+            return "createjoyflight";
         } else {
-            return null;
+            return "createpilottraining";
         }
     }
 
-    public void createActivity(ActivityType type) {
-        //System.out.println("ENTER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        //System.out.println("param test is: " + type);
-        
-        SimpleActivityFactory activityFactory = new SimpleActivityFactory();
-        activity = activityFactory.createActivity(type);
-        //System.out.println("ACTIVITY IN ACTIVITY CONTROLLER AFTER VIEWACTION: " + activity.getClass());
-    }
-    /*public void createActivity(ActivityType type) {
-     System.out.println("ENTER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!TYPE IS:"+type);
-     SimpleActivityFactory activityFactory = new SimpleActivityFactory();
-     activity = activityFactory.createActivity(ActivityType.JOYFLIGHT);
-     }*/
-
-    public String saveActivity() {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        Map<String, String> params = facesContext.getExternalContext().getRequestParameterMap();
-        activityType = ActivityType.valueOf(params.get("type"));
-        
-        createActivity(activityType);
-        System.out.println("ACTIVITY IN ACTIVITY CONTROLLER IN SAVEACTIVITY: " + activity.getClass());
-        ActivityDatabase.create(this.activity);
+    public String createActivity() {
+        ActivityDatabase.create(getActivity());
         return "activitylist";
     }
-
+    
     public String updateActivity() {
         ActivityDatabase.update(activity);
         return "activitylist";
     }
 
+    
     public String deleteActivity() {
         ActivityDatabase.delete(activity.getId());
         return "activitylist";
     }
 
     public void loadActivity(int id) {
-        //System.out.println("incoming id: "+id);
         activity = ActivityDatabase.read(id);
     }
 }

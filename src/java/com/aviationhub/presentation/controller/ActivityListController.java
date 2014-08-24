@@ -26,11 +26,11 @@ public class ActivityListController {
 
     
     public String getDeleteTarget(ActivityType type,int id) {
-        System.out.println(id);
+        
         if (type == ActivityType.JOYFLIGHT) {
-            return "deletejoyflight.xhtml?id="+id;
+            return "deletejoyflight?id="+id;
         } else if (type == ActivityType.PILOTTRAINING) {
-            return "deletepilottraining.xhtml?id="+id;
+            return "deletepilottraining?id="+id;
         } else {
             return null;
         }
