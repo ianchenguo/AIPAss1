@@ -40,14 +40,10 @@
             </h:column>
 
 
-            <h:column>
-                
+            <h:column>            
                     <h:commandLink value="delete" action="#{activityListController.getDeleteTarget(activity.type, param.id)}">
-                        <!--<f:param name="id" value="#{activity.id}"/>-->
-                        <h:outputText value="#{param.id}"/>
+                        <f:param name="id" value="#{activity.id}"/>
                     </h:commandLink>
-                
-                <h:outputText value="#{activity.id}"/>
             </h:column>
 
             <h:column>
@@ -55,7 +51,6 @@
                     <f:param name="id" value="#{activity.id}"/>
                 </h:link>
             </h:column>
-
         </h:dataTable>
 
         <h:button outcome="chooseactivitytype" value="Create Activity"/>        

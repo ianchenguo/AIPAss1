@@ -18,7 +18,7 @@
                 <h:inputText id="provider" value="#{activityController.activity.provider}" label="Provider"/>
 
                 <h:outputLabel for="state" value="State: "/>
-                <h:selectOneRadio id="activitytype" value="#{activityController.activity.state}" label="State">
+                <h:selectOneRadio id="state" value="#{activityController.activity.state}" label="State">
                     <f:selectItem itemLabel="Upcoming" itemValue="UPCOMING" />
                     <f:selectItem itemLabel="Available" itemValue="AVAILABLE" />
                     <f:selectItem itemLabel="Expired" itemValue="EXPIRED" />
@@ -38,7 +38,7 @@
             </h:panelGrid>
 
             <h:panelGrid columns="2">
-                <h:commandButton action="#{activityController.createActivity()}" value="Create"/>
+                <h:commandButton action="#{activityController.saveActivity()}" value="Create"/>
                 <h:button value="Cancle" outcome="activitylist"/>
 
             </h:panelGrid>
