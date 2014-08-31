@@ -10,12 +10,12 @@ package com.aviationhub.business.activity.factory;
  *
  * @author ian
  */
-public enum ActivityType {
+public enum ActivityTypeEnum {
     PILOTTRAINING("Pilot training"),
     JOYFLIGHT("Joy flight");
     
     private final String typeAsString;
-    private ActivityType(String typeAsString) {
+    private ActivityTypeEnum(String typeAsString) {
         this.typeAsString = typeAsString;
     }
     

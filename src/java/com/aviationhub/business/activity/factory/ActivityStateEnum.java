@@ -10,13 +10,13 @@ package com.aviationhub.business.activity.factory;
  *
  * @author ian
  */
-public enum ActivityState {
+public enum ActivityStateEnum {
     AVAILABLE("Available"),
     UPCOMING("Upcoming"),
     EXPIRED("Expired");
     
     private final String stateAsString;
-    private ActivityState(String stateAsString) {
+    private ActivityStateEnum (String stateAsString) {
         this.stateAsString = stateAsString;
     }
     

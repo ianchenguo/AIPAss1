@@ -6,7 +6,7 @@
 
 package com.aviationhub.business.activity;
 
-import com.aviationhub.business.activity.factory.Activity;
+import com.aviationhub.business.activity.factory.ActivityDTO;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -23,22 +23,22 @@ public class ActivityDatabase implements Serializable{
         return idGenerator;
     }
    
-    private static LinkedHashMap<Integer, Activity> activityList = new LinkedHashMap<>();
+    private static LinkedHashMap<Integer, ActivityDTO> activityList = new LinkedHashMap<>();
    
-    public static Collection<Activity> findAll() {
+    public static Collection<ActivityDTO> findAll() {
         return activityList.values();
     }
    
-    public static void create(Activity activity) {
+    public static void create(ActivityDTO activity) {
         activity.setId(generateUniqueId());
         activityList.put(activity.getId(), activity);
     }
    
-    public static Activity read(int index) {
+    public static ActivityDTO read(int index) {
         return activityList.get(index);
     }
    
-    public static void update(Activity activity) {
+    public static void update(ActivityDTO activity) {
         activityList.put(activity.getId(), activity);
     }
    

@@ -20,34 +20,34 @@ import javax.inject.Named;
 public class ActivityController implements Serializable {
 
     private SimpleActivityFactory activityFactory = new SimpleActivityFactory();
-    private Activity activity;
-    private ActivityType activityType;
+    private ActivityDTO activity;
+    private ActivityTypeEnum activityType;
 
     /**
      * @return the activityType
      */
-    public ActivityType getActivityType() {
+    public ActivityTypeEnum getActivityType() {
         return activityType;
     }
 
     /**
      * @param activityType the activityType to set
      */
-    public void setActivityType(ActivityType activityType) {
+    public void setActivityType(ActivityTypeEnum activityType) {
         this.activityType = activityType;
     }
 
     /**
      * @return the activity
      */
-    public Activity getActivity() {
+    public ActivityDTO getActivity() {
         return activity;
     }
 
     public String chooseType() {
         activity = activityFactory.createActivity(activityType);
 
-        if (activityType == ActivityType.JOYFLIGHT) {
+        if (activityType == ActivityTypeEnum.JOYFLIGHT) {
             return "createjoyflight";
         } else {
             return "createpilottraining";

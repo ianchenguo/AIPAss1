@@ -11,13 +11,13 @@ package com.aviationhub.business.activity.factory;
  * @author ian
  */
 public class SimpleActivityFactory {
-    public Activity createActivity(ActivityType type) {
-        Activity activity = null;
+    public ActivityDTO createActivity(ActivityTypeEnum type) {
+        ActivityDTO activity = null;
         
-        if (type == ActivityType.JOYFLIGHT) {
-            activity = new JoyFlight();
-        } else if (type == ActivityType.PILOTTRAINING) {
-            activity = new TrainingCourse();
+        if (type == ActivityTypeEnum.JOYFLIGHT) {
+            activity = new JoyFlightDTO();
+        } else if (type == ActivityTypeEnum.PILOTTRAINING) {
+            activity = new TrainingCourseDTO();
         }
         
         return activity;

@@ -10,12 +10,12 @@ package com.aviationhub.business.activity.factory;
  *
  * @author ian
  */
-public class TrainingCourse extends Activity{
+public class TrainingCourseDTO extends ActivityDTO{
     private String duration;
     private String certificationInfo;
 
-    public TrainingCourse() {
-        type = ActivityType.PILOTTRAINING;
+    public TrainingCourseDTO() {
+        type = ActivityTypeEnum.PILOTTRAINING;
     }
 
     /**

@@ -10,11 +10,11 @@ package com.aviationhub.business.activity.factory;
  *
  * @author ian
  */
-public class JoyFlight extends Activity{
+public class JoyFlightDTO extends ActivityDTO{
     private String capacity;
     
-    public JoyFlight() {
-        type = ActivityType.JOYFLIGHT;
+    public JoyFlightDTO() {
+        type = ActivityTypeEnum.JOYFLIGHT;
                 
     }
 

@@ -10,12 +10,12 @@ package com.aviationhub.business.activity.factory;
  *
  * @author ian
  */
-public enum ActivityProvider {
+public enum ActivityProviderEnum {
     BANKSTOWNAVIATIONCLUB("Bankstown Aviation Club"),
     BLACKTOWNFLYINGSCHOOL("Blacktown Flying School");
     
     private final String providerAsString;
-    private ActivityProvider(String providerAsString) {
+    private ActivityProviderEnum (String providerAsString) {
         this.providerAsString = providerAsString;
     }
     

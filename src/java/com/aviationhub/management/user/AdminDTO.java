@@ -12,21 +12,13 @@ import java.io.Serializable;
  *
  * @author ian
  */
-public class Administrator  implements Serializable{
+public class AdminDTO  implements Serializable{
     private int id;
-    private String userName;
+    private String username;
     private String password;
+    private String fullName;
     private String employeeId;
-
-    public Administrator(int id, String userName, String password, String employId) {
-        this.id = id;
-        this.userName = userName;
-        this.password = password;
-        this.employeeId = employId;
-    }
-
-    public Administrator() {
-    }
+    private String email;
 
     /**
      * @return the id
@@ -43,17 +35,17 @@ public class Administrator  implements Serializable{
     }
 
     /**
-     * @return the userName
+     * @return the username
      */
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     /**
-     * @param userName the userName to set
+     * @param username the username to set
      */
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -71,6 +63,20 @@ public class Administrator  implements Serializable{
     }
 
     /**
+     * @return the fullName
+     */
+    public String getFullName() {
+        return fullName;
+    }
+
+    /**
+     * @param fullName the fullName to set
+     */
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    /**
      * @return the employeeId
      */
     public String getEmployeeId() {
@@ -84,5 +90,18 @@ public class Administrator  implements Serializable{
         this.employeeId = employeeId;
     }
 
-    
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }

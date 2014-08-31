@@ -5,9 +5,9 @@
  */
 package com.aviationhub.presentation.controller;
 
-import com.aviationhub.business.activity.factory.Activity;
+import com.aviationhub.business.activity.factory.ActivityDTO;
 import com.aviationhub.business.activity.ActivityDatabase;
-import com.aviationhub.business.activity.factory.ActivityType;
+import com.aviationhub.business.activity.factory.ActivityTypeEnum;
 import java.util.Collection;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -20,16 +20,16 @@ import javax.inject.Named;
 @RequestScoped
 public class ActivityListController {
 
-    public Collection<Activity> getActivityList() {
+    public Collection<ActivityDTO> getActivityList() {
         return ActivityDatabase.findAll();
     }
 
     
-    public String getDeleteTarget(ActivityType type,int id) {
+    public String getDeleteTarget(ActivityTypeEnum type,int id) {
         
-        if (type == ActivityType.JOYFLIGHT) {
+        if (type == ActivityTypeEnum.JOYFLIGHT) {
             return "deletejoyflight?id="+id;
-        } else if (type == ActivityType.PILOTTRAINING) {
+        } else if (type == ActivityTypeEnum.PILOTTRAINING) {
             return "deletepilottraining?id="+id;
         } else {
             return null;

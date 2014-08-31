@@ -10,11 +10,11 @@ package com.aviationhub.business.activity.factory;
  *
  * @author ian
  */
-public abstract class Activity {
+public abstract class ActivityDTO {
     int id;
     String name;
-    ActivityType type;
-    ActivityState state;
+    ActivityTypeEnum type;
+    ActivityStateEnum state;
     String provider;
     String aircraftInfo;
     String activityInfo;
@@ -50,28 +50,28 @@ public abstract class Activity {
     /**
      * @return the type
      */
-    public ActivityType getType() {
+    public ActivityTypeEnum getType() {
         return type;
     }
 
     /**
      * @param type the type to set
      */
-    public void setType(ActivityType type) {
+    public void setType(ActivityTypeEnum type) {
         this.type = type;
     }
 
     /**
      * @return the state
      */
-    public ActivityState getState() {
+    public ActivityStateEnum getState() {
         return state;
     }
 
     /**
      * @param state the state to set
      */
-    public void setState(ActivityState state) {
+    public void setState(ActivityStateEnum state) {
         this.state = state;
     }
 
