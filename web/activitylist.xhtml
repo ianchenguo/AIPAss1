@@ -8,55 +8,59 @@
     </h:head>
     <h:body>
         <h1>Activity List</h1>
-        <h:form>
-            <h:dataTable id="activityTable" var="activity"  value="#{activityListController.activityList}">
+<h:form>
+        <h:dataTable id="activityTable" var="activity"  value="#{activityListController.activityList}">
 
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Activity Name"/>
-                    </f:facet>
-                    <h:outputText value="#{activity.name}"/>
-                </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Activity Name"/>
+                </f:facet>
+                <h:outputText value="#{activity.name}"/>
+            </h:column>
 
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Activity Type"/>
-                    </f:facet>
-                    <h:outputText value="#{activity.type.toString()}"/>
-                </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Activity Type"/>
+                </f:facet>
+                <h:outputText value="#{activity.type.toString()}"/>
+            </h:column>
 
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Activity Provider"/>
-                    </f:facet>
-                    <h:outputText value="#{activity.provider}"/>
-                </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Activity Provider"/>
+                </f:facet>
+                <h:outputText value="#{activity.provider}"/>
+            </h:column>
 
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Activity State"/>
-                    </f:facet>
-                    <h:outputText value="#{activity.state.toString()}"/>
-                </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Activity State"/>
+                </f:facet>
+                <h:outputText value="#{activity.state.toString()}"/>
+            </h:column>
 
 
-                <h:column>               
-                    <h:commandLink value="delete" action="#{activityListController.getTarget('delete',activity.type, activity.id)}">
-                        <h:outputText value="#{activity.id}"/>
+            <h:column>
+                
+                    <h:commandLink value="delete" action="#{activityListController.getDeleteTarget(activity.type, param.id)}">
+                        <!--<f:param name="id" value="#{activity.id}"/>-->
+                        <h:outputText value="#{param.id}"/>
                     </h:commandLink>
-                </h:column>
+                
+                <h:outputText value="#{activity.id}"/>
+            </h:column>
 
-                <h:column>
-                    <h:commandLink value="update" action="#{activityListController.getTarget('update', activity.type, activity.id)}">
-                        <h:outputText value="#{activity.id}"/>
-                    </h:commandLink>
-                </h:column>
+            <h:column>
+                <h:link outcome="updateactivity" value="update">
+                    <f:param name="id" value="#{activity.id}"/>
+                </h:link>
+            </h:column>
 
-            </h:dataTable>
+        </h:dataTable>
 
-            <h:button outcome="chooseactivitytype" value="Create Activity"/>        
-            <h:button value="Log off" outcome="index"/>
-        </h:form>
+        <h:button outcome="chooseactivitytype" value="Create Activity"/>        
+        <h:button value="Log off" outcome="index"/>
+</h:form>
     </h:body>
 </html>
 
