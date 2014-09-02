@@ -75,7 +75,7 @@ CREATE TABLE AIP.JOYFLIGHTPROPERTY (
     FOREIGN KEY (ACTIVITYID)
         REFERENCES AIP.ACTIVITY(ID));
 */
-DROP TABLE AIP.PILOTRAINING;
+DROP TABLE AIP.PILOTTRAINING;
 DROP TABLE AIP.JOYFLIGHT;
 DROP TABLE AIP.ACTIVITY;
 DROP TABLE AIP.ACTIVITYTYPE;
@@ -96,28 +96,38 @@ CREATE table AIP.ACTIVITY (
 
 
 CREATE TABLE AIP.PILOTTRAINING (
-    ACTIVITYID  INTEGER NOT NULL 
+    ID  INTEGER NOT NULL 
                 PRIMARY KEY GENERATED ALWAYS AS IDENTITY 
                 (START WITH 1, INCREMENT BY 1),
+    ACTIVITYID  INTEGER NOT NULL,
     CERTIFICATE    VARCHAR(255)NOT NULL,
     DURATION    VARCHAR(255)NOT NULL,
     FOREIGN KEY (ACTIVITYID)
         REFERENCES AIP.ACTIVITY(ID));
 
 CREATE TABLE AIP.JOYFLIGHT (
-    ACTIVITYID  INTEGER NOT NULL 
+    ID  INTEGER NOT NULL 
                 PRIMARY KEY GENERATED ALWAYS AS IDENTITY 
                 (START WITH 1, INCREMENT BY 1),
+    ACTIVITYID  INTEGER NOT NULL,
     CAPACITY    INTEGER NOT NULL,
     FOREIGN KEY (ACTIVITYID)
         REFERENCES AIP.ACTIVITY(ID));
 
+truncate table joyflight;
+truncate table pilottraining;
+truncate table activity;
 
 
-select id,title,activitytype,provider,aircraft,activitystate,activitydesc,capacity 
+select activity.id,title,activitytype,provider,aircraft,activitystate,activitydesc,capacity 
 from aip.activity, aip.joyflight 
 where aip.activity.id = aip.joyflight.activityid;
 
-select id,title,activitytype,provider,aircraft,activitystate,activitydesc,certificate,duration 
+select activity.id,title,activitytype,provider,aircraft,activitystate,activitydesc,certificate,duration 
 from aip.activity, aip.pilottraining 
 where aip.activity.id = aip.pilottraining.activityid;
+
+insert into aip.activity (title,activitytype,provider,aircraft,activitystate,activitydesc) values ('joy1','JOYFLIGHT','provider1','z11','UPCOMING','activity desc');
+insert into aip.joyflight (activityid,capacity) values (1,1);
+insert into aip.activity (title,activitytype,provider,aircraft,activitystate,activitydesc) values ('train1','PILOTTRAINING','provider2','f22','EXPIRED','activity desc');
+insert into aip.pilottraining (activityid,certificate,duration) values (2,'fighter pilot','3 months');

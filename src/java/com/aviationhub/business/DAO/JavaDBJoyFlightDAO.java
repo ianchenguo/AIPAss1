@@ -53,7 +53,7 @@ class JavaDBJoyFlightDAO implements JoyFlightDAO {
      FOREIGN KEY (ACTIVITYID)
      REFERENCES AIP.ACTIVITY(ID));*/
 
-    private static final String SELECT_ALL = "select id,title,activitytype,provider,aircraft,activitystate,activitydesc,capacity "
+    private static final String SELECT_ALL = "select activity.id,title,activitytype,provider,aircraft,activitystate,activitydesc,capacity "
             + "from aip.activity, aip.joyflight "
             + "where aip.activity.id = aip.joyflight.activityid";
     

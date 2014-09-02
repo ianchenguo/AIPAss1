@@ -4,7 +4,6 @@
     <Scope Scope="Project">
         <Node id="deletepilottraining.xhtml" x="788" y="550" zoom="true"/>
         <Node id="activitylist/activitylist.xhtml" x="1014" y="232" zoom="true"/>
-        <Node id="activitylist.xhtml" x="378" y="546" zoom="true"/>
         <Node id="adminlogin/adminlogin.xhtml" x="24" y="207" zoom="true"/>
         <Node id="index.xhtml" x="35" y="35" zoom="true"/>
         <Node id="createpilottraining.xhtml" x="932" y="313" zoom="true"/>
@@ -12,6 +11,7 @@
         <Node id="updateactivity.xhtml" x="900" y="150" zoom="true"/>
         <Node id="adminlogin/adminregister.xhtml" x="13" y="333" zoom="true"/>
         <Node id="deletejoyflight.xhtml" x="672" y="267" zoom="true"/>
+        <Node id="activitylist/newactivity.xhtml" x="150" y="150" zoom="true"/>
         <Node id="createjoyflight.xhtml" x="150" y="600" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>

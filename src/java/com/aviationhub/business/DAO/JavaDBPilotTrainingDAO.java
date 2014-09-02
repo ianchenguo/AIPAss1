@@ -55,7 +55,7 @@ class JavaDBPilotTrainingDAO implements PilotTrainingDAO{
      FOREIGN KEY (ACTIVITYID)
      REFERENCES AIP.ACTIVITY(ID));*/
 
-    private static final String SELECT_ALL = "select id,title,activitytype,provider,aircraft,activitystate,activitydesc,certificate,duration "
+    private static final String SELECT_ALL = "select activity.id,title,activitytype,provider,aircraft,activitystate,activitydesc,certificate,duration "
             + "from aip.activity, aip.pilottraining "
             + "where aip.activity.id = aip.pilottraining.activityid";
     
