@@ -4,22 +4,23 @@
  * and open the template in the editor.
  */
 
-package com.aviationhub.business.activity.factory;
+package com.aviationhub.business.DTO.Activity;
+
 
 /**
  *
  * @author ian
  */
-public class SimpleActivityFactory {
-    public ActivityDTO createActivity(ActivityTypeEnum type) {
-        ActivityDTO activity = null;
-        
+public class ActivityDTOSimpleFactory {
+    public static ActivityDTO createActivity(ActivityTypeEnum type) {
+ 
         if (type == ActivityTypeEnum.JOYFLIGHT) {
-            activity = new JoyFlightDTO();
+            return new JoyFlightDTO();
         } else if (type == ActivityTypeEnum.PILOTTRAINING) {
-            activity = new TrainingCourseDTO();
+            return new PilotTrainingDTO();
+        } else {
+            return null;
         }
-        
-        return activity;
+
     }
 }

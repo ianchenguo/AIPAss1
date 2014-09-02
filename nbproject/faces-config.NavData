@@ -2,16 +2,17 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="activitylist.xhtml" x="507" y="62" zoom="true"/>
-        <Node id="adminlogin.xhtml" x="58" y="211" zoom="true"/>
-        <Node id="index.xhtml" x="83" y="-31" zoom="true"/>
-        <Node id="deleteactivity.xhtml" x="1198" y="253" zoom="true"/>
-        <Node id="createpilottraining.xhtml" x="653" y="317" zoom="true"/>
-        <Node id="chooseactivitytype.xhtml" x="763" y="159" zoom="true"/>
-        <Node id="adminregister.xhtml" x="39" y="443" zoom="true"/>
-        <Node id="updateactivity.xhtml" x="1193" y="440" zoom="true"/>
-        <Node id="createactivity.xhtml" x="1157" y="29" zoom="true"/>
-        <Node id="createjoyflight.xhtml" x="579" y="409" zoom="true"/>
+        <Node id="deletepilottraining.xhtml" x="788" y="550" zoom="true"/>
+        <Node id="activitylist/activitylist.xhtml" x="1014" y="232" zoom="true"/>
+        <Node id="activitylist.xhtml" x="378" y="546" zoom="true"/>
+        <Node id="adminlogin/adminlogin.xhtml" x="24" y="207" zoom="true"/>
+        <Node id="index.xhtml" x="35" y="35" zoom="true"/>
+        <Node id="createpilottraining.xhtml" x="932" y="313" zoom="true"/>
+        <Node id="chooseactivitytype.xhtml" x="561" y="173" zoom="true"/>
+        <Node id="updateactivity.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="adminlogin/adminregister.xhtml" x="13" y="333" zoom="true"/>
+        <Node id="deletejoyflight.xhtml" x="672" y="267" zoom="true"/>
+        <Node id="createjoyflight.xhtml" x="150" y="600" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 
-package com.aviationhub.business.activity.factory;
+package com.aviationhub.business.DTO.Activity;
+
+import java.io.Serializable;
 
 /**
  *
  * @author ian
  */
-public abstract class ActivityDTO {
+public abstract class ActivityDTO implements Serializable{
     int id;
     String name;
     ActivityTypeEnum type;

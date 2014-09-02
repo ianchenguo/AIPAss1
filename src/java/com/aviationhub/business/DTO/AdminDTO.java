@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.aviationhub.management.user;
+package com.aviationhub.business.DTO;
 
 import java.io.Serializable;
 

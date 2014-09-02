@@ -5,26 +5,23 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <f:view contentType="text/html">
-        <h:head />
+        <h:head>
+            <title>Chen Guo 11670179</title>
+            <h:outputStylesheet library="css" name="styles.css"/>
+        </h:head>
         <h:body>
             <p:layout fullPage="true">
                 <p:layoutUnit position="north" size="50" header="The Aviation Hub"/>
                 <p:layoutUnit position="west" size="200" />
                 <p:layoutUnit position="east" size="200" />
-                
+
                 <p:layoutUnit position="south" size="50" style="text-align: center; ">
                     <h:outputText value="AIP Assignment 1 Chen Guo 11670179" style="font-size: 70%"/>
                 </p:layoutUnit>
 
 
-                <p:layoutUnit position="center" style="position: relative;">
-                    <div style="text-align:center;position: absolute;
-                         top: 0;
-                         bottom: 0;
-                         left: 0;
-                         right: 0;
-                         height: 20%;
-                         margin: auto;">
+                <p:layoutUnit position="center" styleClass="verticalCentreParent">
+                    <div class="verticalCentre">
                         <p:button value="Admin login" outcome="adminlogin"/>
                     </div>
                 </p:layoutUnit>

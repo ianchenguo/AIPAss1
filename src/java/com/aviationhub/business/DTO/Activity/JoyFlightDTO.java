@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 
-package com.aviationhub.business.activity.factory;
+package com.aviationhub.business.DTO.Activity;
 
 /**
  *
  * @author ian
  */
 public class JoyFlightDTO extends ActivityDTO{
-    private String capacity;
+    private int capacity;
     
     public JoyFlightDTO() {
         type = ActivityTypeEnum.JOYFLIGHT;
@@ -21,14 +21,14 @@ public class JoyFlightDTO extends ActivityDTO{
     /**
      * @return the capacity
      */
-    public String getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
     /**
      * @param capacity the capacity to set
      */
-    public void setCapacity(String capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
     

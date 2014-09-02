@@ -4,19 +4,20 @@
  * and open the template in the editor.
  */
 
-package com.aviationhub.business.activity.factory;
+package com.aviationhub.business.DTO.Activity;
 
 /**
  *
  * @author ian
  */
-public class TrainingCourseDTO extends ActivityDTO{
+public class PilotTrainingDTO extends ActivityDTO{
     private String duration;
     private String certificationInfo;
 
-    public TrainingCourseDTO() {
+    public PilotTrainingDTO() {
         type = ActivityTypeEnum.PILOTTRAINING;
     }
+
 
     /**
      * @return the duration

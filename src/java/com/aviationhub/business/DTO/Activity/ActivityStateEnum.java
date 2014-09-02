@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.aviationhub.business.activity.factory;
+package com.aviationhub.business.DTO.Activity;
 
 /**
  *

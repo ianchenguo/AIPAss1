@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.aviationhub.business.activity;
+package com.aviationhub.business.DAO;
 
-import com.aviationhub.business.activity.factory.ActivityDTO;
+import com.aviationhub.business.DTO.Activity.ActivityDTO;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedHashMap;

@@ -5,12 +5,20 @@
  */
 package com.aviationhub.presentation.controller;
 
-import com.aviationhub.business.activity.factory.ActivityDTO;
-import com.aviationhub.business.activity.ActivityDatabase;
-import com.aviationhub.business.activity.factory.ActivityTypeEnum;
-import java.util.Collection;
+import com.aviationhub.business.DAO.DAODBTypeEnum;
+import com.aviationhub.business.DAO.DAOFactory;
+import com.aviationhub.business.DAO.JoyFlightDAO;
+import com.aviationhub.business.DAO.PilotTrainingDAO;
+import com.aviationhub.business.DTO.Activity.ActivityDTO;
+import com.aviationhub.business.DTO.Activity.ActivityTypeEnum;
+import com.aviationhub.business.DTO.Activity.JoyFlightDTO;
+import com.aviationhub.business.DTO.Activity.PilotTrainingDTO;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.naming.NamingException;
 
 /**
  *
@@ -19,11 +27,50 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class ActivityListController {
-
-    public Collection<ActivityDTO> getActivityList() {
-        return ActivityDatabase.findAll();
+    
+    private ActivityTypeEnum activityType;
+    private DAOFactory dAOFactory = DAOFactory.getFactory(DAODBTypeEnum.JAVADB);
+    
+        /**
+     * @return the activityType
+     */
+    public ActivityTypeEnum getActivityType() {
+        return activityType;
     }
 
+    /**
+     * @param activityType the activityType to set
+     */
+    public void setActivityType(ActivityTypeEnum activityType) {
+        this.activityType = activityType;
+    }
+    
+    public String createNewActivity() {
+        if (activityType == ActivityTypeEnum.JOYFLIGHT) {
+            return "/faces/activity/newactivity?faces-redirect=true&type=joyflight";
+        } else if (activityType == ActivityTypeEnum.PILOTTRAINING) {
+            return "/faces/activity/newactivity?faces-redirect=true&type=pilottraining";
+        } else {
+            return null;
+        }
+    }
+
+    public List<ActivityDTO> getActivityList() throws NamingException, SQLException {
+        
+        JoyFlightDAO joyFlightDAO = dAOFactory.getJoyFlightDAO();
+        PilotTrainingDAO pilotTrainingDAO = dAOFactory.getPilotTrainingDAO();
+        
+        List<JoyFlightDTO> joyFlightList = joyFlightDAO.findAll();
+        List<PilotTrainingDTO> pilotTrainingList = pilotTrainingDAO.findAll();
+        
+        List<ActivityDTO> activityList = new ArrayList<>();
+        activityList.addAll(joyFlightList);
+        activityList.addAll(pilotTrainingList);
+        
+        return activityList;
+    }
+
+    
     
     public String getDeleteTarget(ActivityTypeEnum type,int id) {
         
@@ -35,5 +82,5 @@ public class ActivityListController {
             return null;
         }
     }
-    
+
 }

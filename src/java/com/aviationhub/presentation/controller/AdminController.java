@@ -5,9 +5,11 @@
  */
 package com.aviationhub.presentation.controller;
 
-import com.aviationhub.management.user.AdminDAO;
-import com.aviationhub.management.user.AdminDAOJavaDB;
-import com.aviationhub.management.user.AdminDTO;
+
+import com.aviationhub.business.DAO.AdminDAO;
+import com.aviationhub.business.DAO.DAODBTypeEnum;
+import com.aviationhub.business.DAO.DAOFactory;
+import com.aviationhub.business.DTO.AdminDTO;
 import java.io.Serializable;
 import java.sql.SQLException;
 import javax.enterprise.context.RequestScoped;
@@ -24,6 +26,7 @@ import javax.naming.NamingException;
 public class AdminController implements Serializable {
 
     private AdminDTO admin = new AdminDTO();
+    private DAOFactory dAOFactory = DAOFactory.getFactory(DAODBTypeEnum.JAVADB);
 
     /**
      * @return the admin
@@ -32,21 +35,32 @@ public class AdminController implements Serializable {
         return admin;
     }
 
+    /**
+     *
+     * @return 
+     * @throws NamingException
+     * @throws SQLException
+     */
     public String login() throws NamingException, SQLException {
-
-        AdminDAO adminDAO = new AdminDAOJavaDB();
-        AdminDTO adminDTO = adminDAO.findUser(this.admin.getUsername());
+        AdminDAO adminDAO = dAOFactory.getAdminDAO();
+        AdminDTO adminDTO = adminDAO.findAccount(this.admin.getUsername());
         if (admin.getPassword().equals(adminDTO.getPassword())) {
-            return "activitylist?faces-redirect=true";
+            return "/faces/activitylist/activitylist?faces-redirect=true";
         } else {
-            return "adminlogin?faces-redirect=true";
+            return "/faces/adminlogin/adminlogin?faces-redirect=true";
         }
     }
 
+    /**
+     *
+     * @return 
+     * @throws NamingException
+     * @throws SQLException
+     */
     public String register() throws NamingException, SQLException {
-        AdminDAO adminDAO = new AdminDAOJavaDB();
-        adminDAO.addUser(admin);
-        return "adminlogin?faces-redirect=true";
+        AdminDAO adminDAO = dAOFactory.getAdminDAO();
+        adminDAO.addAccount(admin);
+        return "/faces/adminlogin/adminlogin?faces-redirect=true";
     }
 
 }

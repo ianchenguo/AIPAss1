@@ -7,11 +7,9 @@
     <f:view contentType="text/html">
         <h:head>
             <title>Activity List</title>
+            <h:outputStylesheet library="css" name="styles.css"/>
         </h:head>
         <h:body>
-
-
-
 
             <p:layout fullPage="true">
                 <p:layoutUnit position="north" size="50" header="The Aviation Hub"/>
@@ -21,24 +19,18 @@
                     <h:outputText value="AIP Assignment 1 Chen Guo 11670179" style="font-size: 70%"/>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="center" style="position: relative;">
+                <p:layoutUnit position="center" styleClass="verticalCentreParent">
 
                     <h:form>
                         <p:breadCrumb>
-                            <p:menuitem value="Home" url="index.xhtml"/>
+                            <p:menuitem value="Home" url="/faces/index.xhtml"/>
                             <p:menuitem value="Activity List" url="#"/>
                         </p:breadCrumb>
                     </h:form>
 
                     <h1>Activity List</h1>
-                    <div style="text-align:center;position: absolute;
-                         top: 0;
-                         bottom: 0;
-                         left: 0;
-                         right: 0;
-                         width: 50%;
-                         height: 20%;
-                         margin: auto;">
+                    <div class="verticalCentre">
+
                         <p:dataTable id="activityTable" var="activity"  value="#{activityListController.activityList}">
                             <p:column headerText="Title">
                                 <h:outputText value="#{activity.name}"/>
@@ -69,6 +61,21 @@
                             </p:column>
 
                         </p:dataTable>
+                        
+                        
+                        <h:form>
+                            <h:panelGrid columns="2">
+                                <p:outputLabel for="activityType" value="Activity Type: "/>
+                                <p:selectOneMenu id="activityType" value="#{activityListController.activityType}">
+                                    <f:selectItem itemLabel="Joy Flight" itemValue="JOYFLIGHT"/>
+                                    <f:selectItem itemLabel="Pilot Training" itemValue="PILOTTRAINING"/>
+                                </p:selectOneMenu>
+                            </h:panelGrid>
+                            <p:commandButton value="New Activity" action="#{activityListController.createNewActivity()}"/>
+                            
+                        </h:form>
+                        
+                        
 
                         <h:button outcome="chooseactivitytype" value="Create Activity"/>        
                         <h:button value="Log off" outcome="index"/>

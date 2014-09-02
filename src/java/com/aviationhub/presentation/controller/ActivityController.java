@@ -5,7 +5,9 @@
  */
 package com.aviationhub.presentation.controller;
 
-import com.aviationhub.business.activity.ActivityDatabase;
+import com.aviationhub.business.DTO.Activity.ActivityTypeEnum;
+import com.aviationhub.business.DTO.SimpleActivittyDTO;
+import com.aviationhub.business.DAO.ActivityDatabase;
 import com.aviationhub.business.activity.factory.*;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;

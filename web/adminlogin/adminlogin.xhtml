@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <title>Administrator Login</title>
+            <h:outputStylesheet library="css" name="styles.css"/>
+        </h:head>
+        <h:body>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="50" header="The Aviation Hub"/>
+                <p:layoutUnit position="west" size="200" />
+                <p:layoutUnit position="east" size="200" />
+                <p:layoutUnit position="south" size="50" style="text-align: center; ">
+                    <h:outputText value="AIP Assignment 1 Chen Guo 11670179" style="font-size: 70%"/>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center" styleClass="verticalCentreParent">
+
+                    <h:form>
+                        <p:breadCrumb>
+                            <p:menuitem value="Home" url="/faces/index.xhtml"/>
+                            <p:menuitem value="Admin Login" url="#"/>
+                        </p:breadCrumb>
+                    </h:form>
+
+
+                    <h1>Administrator Login</h1>
+                    <div class="verticalCentre">
+
+                        <h:form id="adminLoginForm">          
+                            <h:panelGrid columns="2">
+                                <p:outputLabel for="username" value="Username: "/>
+                                <p:inputText id="username" value="#{adminController.admin.username}" label="Username"/>
+                                <p:outputLabel for="password" value="Password: "/>
+                                <p:password id="password" value="#{adminController.admin.password}" label="Password"/>
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="3" cellpadding="5">
+                                <p:button id="Register" value="Register" outcome="adminregister"/>
+                                <p:commandButton id="submit" action="#{adminController.login()}" value="Login"/>
+                                <p:button id="Cancle" value="Cancle" outcome="adminlogin"/>
+                            </h:panelGrid>
+                        </h:form>
+
+                    </div>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
+
