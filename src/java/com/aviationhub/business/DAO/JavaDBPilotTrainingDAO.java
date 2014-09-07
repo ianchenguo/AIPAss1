@@ -5,7 +5,6 @@
  */
 package com.aviationhub.business.DAO;
 
-import com.aviationhub.business.DTO.Activity.ActivityDTO;
 import com.aviationhub.business.DTO.Activity.ActivityStateEnum;
 import com.aviationhub.business.DTO.Activity.ActivityTypeEnum;
 import com.aviationhub.business.DTO.Activity.PilotTrainingDTO;
@@ -25,7 +24,7 @@ import javax.sql.DataSource;
  *
  * @author ian
  */
-class JavaDBPilotTrainingDAO implements Serializable, ActivityDAO<PilotTrainingDTO> {
+class JavaDBPilotTrainingDAO implements Serializable, GenericDAO<PilotTrainingDTO, Integer> {
 
     private static final String SELECT_ALL = "select activity.id,title,activitytype,provider,aircraft,activitystate,activitydesc,certificate,duration "
             + "from aip.activity, aip.pilottraining "
@@ -67,7 +66,7 @@ class JavaDBPilotTrainingDAO implements Serializable, ActivityDAO<PilotTrainingD
     }
 
     @Override
-    public List findAll() throws NamingException, SQLException {
+    public List<PilotTrainingDTO> findAll() throws NamingException, SQLException {
 
         List<PilotTrainingDTO> results = new ArrayList<>();
         DataSource ds = JavaDBDAOFactory.createDataSource();
@@ -85,9 +84,9 @@ class JavaDBPilotTrainingDAO implements Serializable, ActivityDAO<PilotTrainingD
         return results;
     }
 
-    @Override
-    public ActivityDTO findActivity(Integer id) throws NamingException, SQLException {
 
+    @Override
+    public PilotTrainingDTO findEntry(Integer id) throws NamingException, SQLException {
         DataSource ds = JavaDBDAOFactory.createDataSource();
         try (Connection conn = ds.getConnection();
                 PreparedStatement ps = conn.prepareStatement(SELECT_BY_KEY)) {
@@ -105,7 +104,7 @@ class JavaDBPilotTrainingDAO implements Serializable, ActivityDAO<PilotTrainingD
     }
 
     @Override
-    public void addActivity(PilotTrainingDTO activityDTO) throws NamingException, SQLException {
+    public void addEntry(PilotTrainingDTO activityDTO) throws NamingException, SQLException {
         DataSource ds = JavaDBDAOFactory.createDataSource();
         int activityID = 0;
         try (Connection conn = ds.getConnection();
@@ -139,7 +138,7 @@ class JavaDBPilotTrainingDAO implements Serializable, ActivityDAO<PilotTrainingD
     }
 
     @Override
-    public void deleteActivity(Integer id) throws NamingException, SQLException {
+    public void deleteEntry(Integer id) throws NamingException, SQLException {
         DataSource ds = JavaDBDAOFactory.createDataSource();
         try (Connection conn = ds.getConnection();
                 PreparedStatement ps = conn.prepareStatement(DELETE_BY_KEY)) {
@@ -151,7 +150,7 @@ class JavaDBPilotTrainingDAO implements Serializable, ActivityDAO<PilotTrainingD
     }
 
     @Override
-    public void updateActivity(PilotTrainingDTO activityDTO) throws NamingException, SQLException {
+    public void updateEntry(PilotTrainingDTO activityDTO) throws NamingException, SQLException {
         DataSource ds = JavaDBDAOFactory.createDataSource();
         try (Connection conn = ds.getConnection();
                 PreparedStatement ps1 = conn.prepareStatement(UPDATE_PARENT_TABLE);

@@ -30,12 +30,13 @@ class JavaDBDAOFactory extends DAOFactory {
     }
 
     @Override
-    public AccountDAO getAdminDAO() {
+    public GenericDAO getAdminDAO() {
         return new JavaDBAccountDAO();
     }
 
+
     @Override
-    public ActivityDAO getActivityDAO(ActivityTypeEnum type) {
+    public GenericDAO getActivityDAO(ActivityTypeEnum type) {
         if (type == ActivityTypeEnum.JOYFLIGHT) {
             return new JavaDBJoyFlightDAO();
         } else if (type == ActivityTypeEnum.PILOTTRAINING) {

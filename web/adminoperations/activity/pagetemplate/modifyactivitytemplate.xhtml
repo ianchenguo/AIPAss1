@@ -8,7 +8,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <!-- this page is a cascading template from a base template -->
-    <ui:composition template="./../../../pagetemplate/layouttemplate.xhtml">
+    <ui:composition template="./../../pagetemplate/adminoptionstemplate.xhtml">
 
         <!--define meta data -->
         <ui:define name="metadata">
@@ -20,21 +20,6 @@
         <ui:define name="title">
             <!-- cascading the page title definition to the child page -->
             <ui:insert name="title" />
-        </ui:define>
-
-        <!-- define the left content -->
-        <ui:define name="left">
-            <h:form>
-                <p:menu>
-                    <p:submenu label="Tasks">
-                        <p:menuitem value="Activity List" url="activitylist.xhtml"/>
-                    </p:submenu>
-
-                    <p:submenu label="Account">
-                        <p:menuitem value="Logout" url="./../../index.xhtml"/>
-                    </p:submenu>
-                </p:menu>
-            </h:form>
         </ui:define>
 
         <!-- define the center content -->
@@ -79,7 +64,7 @@
                                                       value="#{activityController.activity.state}" 
                                                       label="state" 
                                                       required="true"
-                                                      requiredMessage="State cannot be empty">
+                                                      requiredMessage="State must be selected">
                                         <f:selectItem itemLabel="Upcoming" itemValue="UPCOMING" />
                                         <f:selectItem itemLabel="Available" itemValue="AVAILABLE" />
                                         <f:selectItem itemLabel="Expired" itemValue="EXPIRED" />
@@ -126,7 +111,10 @@
                                             <p:inputText id="capacity" 
                                                          value="#{activityController.activity.capacity}"
                                                          required="true"
-                                                         requiredMessage="Capacity cannot be empty"/>
+                                                         requiredMessage="Capacity cannot be empty" 
+                                                         converterMessage="Non-integer values are not allowed">
+                                                <f:converter converterId="javax.faces.Integer" />
+                                            </p:inputText>
                                             <p:message for="capacity"/>
                                             <p:watermark for="capacity" value="Number of participants"/>
                                         </p:column>                                                            

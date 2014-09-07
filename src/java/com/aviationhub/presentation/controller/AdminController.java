@@ -5,9 +5,9 @@
  */
 package com.aviationhub.presentation.controller;
 
-import com.aviationhub.business.DAO.AccountDAO;
 import com.aviationhub.business.DAO.DAOFactory;
 import com.aviationhub.business.DAO.DBTypeEnum;
+import com.aviationhub.business.DAO.GenericDAO;
 import com.aviationhub.business.DTO.Account.AccountDTO;
 import com.aviationhub.business.DTO.Account.AccountEnum;
 import com.aviationhub.business.encryption.Encryption;
@@ -44,16 +44,11 @@ public class AdminController implements Serializable {
         return (HttpServletRequest) context.getExternalContext().getRequest();
     }
 
-    public String hasLoggedIn() {
+    public boolean hasLoggedIn() {
         System.out.println("KICK IN!");
         HttpServletRequest request = getRequest();
         System.out.println("get request user: " + request.getRemoteUser());
-        if (request.getRemoteUser().equals("")) {
-
-            return "adminoperations/welcome.xhtml?faces-redirect=true";
-        } else {
-            return null;
-        }
+        return request.getRemoteUser() != null;
     }
 
     /**
@@ -73,8 +68,10 @@ public class AdminController implements Serializable {
             //System.out.println(admin.getPassword());
             //System.out.println(Encryption.hash256(admin.getPassword()));
             //login the account
+            if (hasLoggedIn()) {
+                logout();
+            }
             request.login(admin.getUsername(), admin.getPassword());
-            System.out.println("after login remote user is: " + request.getRemoteUser());
             return "adminoperations/welcome?faces-redirect=true";
 
         } catch (ServletException e) {
@@ -93,7 +90,7 @@ public class AdminController implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         request.logout();
-        return "/faces/index.xhtml?faces-redirect=true";
+        return "logout";
     }
 
     /**
@@ -105,11 +102,11 @@ public class AdminController implements Serializable {
     public String register() throws NamingException, SQLException, NoSuchAlgorithmException {
 
         DAOFactory dAOFactory = DAOFactory.getFactory(DBTypeEnum.JAVADB);
-        AccountDAO adminDAO = dAOFactory.getAdminDAO();
+        GenericDAO adminDAO = dAOFactory.getAdminDAO();
 
         try {
             admin.setPassword(Encryption.hash256(admin.getPassword()));
-            adminDAO.addAccount(admin);
+            adminDAO.addEntry(admin);
             return "index";
         } catch (NoSuchAlgorithmException | NamingException | SQLException e) {
             if (e.equals(e)) {

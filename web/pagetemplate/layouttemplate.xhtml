@@ -5,6 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
 
+    <!-- the parent template of this site -->
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet library="css" name="styles.css"/>
@@ -21,7 +22,7 @@
 
             <!-- the customisable left compartment -->
             <p:layoutUnit position="west" size="250">
-                <ui:insert name="left">left</ui:insert>
+                <ui:insert name="left"/>
             </p:layoutUnit>
 
             <!-- the fixed footer -->

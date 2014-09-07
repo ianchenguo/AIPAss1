@@ -16,9 +16,9 @@ import java.io.Serializable;
 public abstract class DAOFactory implements Serializable {
 
     //abstract methods to get known DAO object
-    public abstract AccountDAO getAdminDAO();
+    public abstract GenericDAO getAdminDAO();
 
-    public abstract ActivityDAO getActivityDAO(ActivityTypeEnum type);
+    public abstract GenericDAO getActivityDAO(ActivityTypeEnum type);
 
     //return a concrete DAO factory object
     public static DAOFactory getFactory(DBTypeEnum dbType) {

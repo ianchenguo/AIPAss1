@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="./../../pagetemplate/layouttemplate.xhtml">
+
+        <!--define meta data -->
+        <ui:define name="metadata">
+            <!-- cascading the meta data definition to the child page -->
+            <ui:insert name="metadata" />
+        </ui:define>
+
+        <!-- define the center content title -->
+        <ui:define name="title">
+            <!-- cascading the page title definition to the child page -->
+            <ui:insert name="title" />
+        </ui:define>
+
+        <!-- include the left side menu -->
+        <ui:define name="left">
+            <ui:include src="sidemenu.xhtml" />
+        </ui:define>
+
+        <!-- define the center content -->
+        <ui:define name="center">
+            <!-- cascading the center content definition to the child page -->
+            <ui:insert name="center" />
+        </ui:define>
+    </ui:composition>
+</html>

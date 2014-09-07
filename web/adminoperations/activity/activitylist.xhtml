@@ -6,27 +6,13 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    <ui:composition template="./../../pagetemplate/layouttemplate.xhtml">
+    <ui:composition template="./../pagetemplate/adminoptionstemplate.xhtml">
 
         <!-- define the center content title -->
         <ui:define name="title">
             Activity List
         </ui:define>
-        <!-- define the left content -->
-        <ui:define name="left">
-            <h:form>
-                <p:menu>
-                    <p:submenu label="Tasks">
-                        <p:menuitem value="Activity List" url="activitylist.xhtml"/>
-                    </p:submenu>
-
-                    <p:submenu label="Account">
-                        <p:menuitem value="Logout" url="./../../index.xhtml"/>
-                    </p:submenu>
-                </p:menu>
-            </h:form>
-
-        </ui:define>
+       
 
         <!-- define the center content -->
         <ui:define name="center">

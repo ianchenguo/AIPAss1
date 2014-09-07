@@ -5,9 +5,9 @@
  */
 package com.aviationhub.presentation.controller;
 
-import com.aviationhub.business.DAO.ActivityDAO;
 import com.aviationhub.business.DAO.DAOFactory;
 import com.aviationhub.business.DAO.DBTypeEnum;
+import com.aviationhub.business.DAO.GenericDAO;
 import com.aviationhub.business.DTO.Activity.ActivityDTO;
 import com.aviationhub.business.DTO.Activity.ActivityTypeEnum;
 import java.io.Serializable;
@@ -40,8 +40,8 @@ public class ActivityListController implements Serializable {
         public List<ActivityDTO> getActivityList() throws NamingException, SQLException {
         //create DAO objects for different types of activities
         DAOFactory dAOFactory = DAOFactory.getFactory(DBTypeEnum.JAVADB);
-        ActivityDAO joyFlightDAO = dAOFactory.getActivityDAO(ActivityTypeEnum.JOYFLIGHT);
-        ActivityDAO pilotTrainingDAO = dAOFactory.getActivityDAO(ActivityTypeEnum.PILOTTRAINING);
+        GenericDAO joyFlightDAO = dAOFactory.getActivityDAO(ActivityTypeEnum.JOYFLIGHT);
+        GenericDAO pilotTrainingDAO = dAOFactory.getActivityDAO(ActivityTypeEnum.PILOTTRAINING);
         //query existing activities into two lists
         List<ActivityDTO> joyFlightList = joyFlightDAO.findAll();
         List<ActivityDTO> pilotTrainingList = pilotTrainingDAO.findAll();

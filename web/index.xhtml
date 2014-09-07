@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html">
 
     <ui:composition template="./pagetemplate/layouttemplate.xhtml">
         <ui:define name="metadata">
@@ -48,20 +47,6 @@
                         <h:link id="Register" value="Register" outcome="registeradmin" style="font-size: 70%;float: right;"/>
                     </h:panelGrid>
                 </h:form><!--admin-login-form-->
-
-                <h:form id="admin-logout-form" >         
-                    <h:panelGrid columns="3" cellpadding="5">
-                        <p:outputLabel for="username" value="Username: "/>
-                        <p:outputLabel id="username" value="#{adminController.admin.username}"/>
-
-
-                        <h:outputText></h:outputText>
-                        <p:commandButton id="submit" action="#{adminController.logout()}" value="logout" ajax="false" style="float: right;"/>
-
-                    </h:panelGrid>
-                </h:form><!--admin-login-form-->
-
-
 
             </p:panel>
         </ui:define>

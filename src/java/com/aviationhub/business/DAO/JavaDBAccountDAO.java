@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  *
  * @author ian
  */
-class JavaDBAccountDAO implements Serializable,AccountDAO {
+class JavaDBAccountDAO implements Serializable,GenericDAO<AccountDTO,String> {
 
     private static final String SELECT_ADMIN = "select username,groupname,password,fullname,employeeid,email "
             + "from aip.account "
@@ -44,17 +44,11 @@ class JavaDBAccountDAO implements Serializable,AccountDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     *
-     *
-     * @param username
-     * @return
-     * @throws javax.naming.NamingException
-     * @throws java.sql.SQLException
-     */
-    @Override
-    public AccountDTO findAccount(String username) throws SQLException, NamingException {
+    
 
+
+    @Override
+    public AccountDTO findEntry(String username) throws NamingException, SQLException {
         DataSource ds = JavaDBDAOFactory.createDataSource();
         try (Connection conn = ds.getConnection();
                 PreparedStatement ps = conn.prepareStatement(SELECT_ADMIN)) {
@@ -77,16 +71,9 @@ class JavaDBAccountDAO implements Serializable,AccountDAO {
         }
     }
 
-    /**
-     *
-     * @param accountDTO
-     * @throws NamingException
-     * @throws SQLException
-     */
     @Override
-    public void addAccount(AccountDTO accountDTO) throws NamingException, SQLException {
-
-        DataSource ds = JavaDBDAOFactory.createDataSource();
+    public void addEntry(AccountDTO accountDTO) throws NamingException, SQLException {
+         DataSource ds = JavaDBDAOFactory.createDataSource();
         try (Connection conn = ds.getConnection();
                 PreparedStatement ps = conn.prepareStatement(INSERT_ACCOUNT)) {
             conn.setAutoCommit(false);
@@ -106,12 +93,12 @@ class JavaDBAccountDAO implements Serializable,AccountDAO {
     }
 
     @Override
-    public void deleteAccount(Integer id) throws NamingException, SQLException {
+    public void deleteEntry(Integer id) throws NamingException, SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void updateAccount(Integer id, AccountDTO activityDTO) throws NamingException, SQLException {
+    public void updateEntry(AccountDTO accountDTO) throws NamingException, SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
