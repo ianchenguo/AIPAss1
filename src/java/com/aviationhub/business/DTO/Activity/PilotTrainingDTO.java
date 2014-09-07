@@ -6,12 +6,16 @@
 
 package com.aviationhub.business.DTO.Activity;
 
+import javax.validation.constraints.Size;
+
 /**
  *
  * @author ian
  */
 public class PilotTrainingDTO extends ActivityDTO{
+    @Size(max = 255)
     private String duration;
+    @Size(max = 255)
     private String certificationInfo;
 
     public PilotTrainingDTO() {

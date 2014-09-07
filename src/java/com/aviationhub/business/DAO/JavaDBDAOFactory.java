@@ -5,6 +5,8 @@
  */
 package com.aviationhub.business.DAO;
 
+import com.aviationhub.business.DTO.Activity.ActivityTypeEnum;
+
 import java.sql.SQLException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -28,18 +30,18 @@ class JavaDBDAOFactory extends DAOFactory {
     }
 
     @Override
-    public JoyFlightDAO getJoyFlightDAO() {
-        return new JavaDBJoyFlightDAO();
+    public AccountDAO getAdminDAO() {
+        return new JavaDBAccountDAO();
     }
 
     @Override
-    public PilotTrainingDAO getPilotTrainingDAO() {
-        return new JavaDBPilotTrainingDAO();
+    public ActivityDAO getActivityDAO(ActivityTypeEnum type) {
+        if (type == ActivityTypeEnum.JOYFLIGHT) {
+            return new JavaDBJoyFlightDAO();
+        } else if (type == ActivityTypeEnum.PILOTTRAINING) {
+            return new JavaDBPilotTrainingDAO();
+        } else {
+            return null;
+        }
     }
-
-    @Override
-    public AdminDAO getAdminDAO() {
-        return new JavaDBAdminDAO();
-    }
-
 }

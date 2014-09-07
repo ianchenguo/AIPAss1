@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <f:view contentType="text/html">
+        <h:head>
+            <title>Activity Details</title>
+            <h:outputStylesheet library="css" name="styles.css"/>
+            <f:metadata>
+                <f:viewAction action="#{activityController.loadActivity(param.id,param.type)}"/>
+            </f:metadata>
+        </h:head>
+
+        <h:body>
+            <p:layout fullPage="true">
+                <!-- the top, bottom, left and right compartments -->
+                <p:layoutUnit position="north" size="50" header="The Aviation Hub"/>
+                <p:layoutUnit position="west" size="200" />
+                <p:layoutUnit position="east" size="200" />
+                <p:layoutUnit position="south" size="50" style="text-align: center; ">
+                    <h:outputText value="AIP Assignment 1 Chen Guo 11670179" style="font-size: 70%"/>
+                </p:layoutUnit>
+                <!-- the center compartments -->
+                <p:layoutUnit position="center" styleClass="verticalCentreParent">
+                    <!-- the navigation bread crumb -->
+                    <div class="navigation-breadcrumb">
+                        <h:form>
+                            <p:breadCrumb>
+                                <p:menuitem value="Home" url="/faces/index.xhtml"/>
+                                <p:menuitem value="Activity List" url="/faces/activity/activitylist.xhtml"/>
+                                <p:menuitem value="Activity Details" url="#"/>
+                            </p:breadCrumb>
+                        </h:form> 
+                    </div><!--navigation-breadcrumb-->
+                    <!-- the main content of the center compartment -->
+                    <div class="center-content">
+                        <h1>Activity Details</h1>
+
+                        <div id="activity-form-section" class="verticalCentre">
+                            <h:form id="activity-detail-form">
+                                <div id="general-activity-info">
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <p:outputLabel for="type" value="Type: "/>
+                                        <h:outputText id="type" value="#{activityController.activity.type.toString()}" />
+                                        
+                                        <p:outputLabel for="name" value="Title: "/>
+                                        <h:outputText id="name" value="#{activityController.activity.name}" />
+
+                                        <p:outputLabel for="provider" value="Provider: "/>
+                                        <h:outputText id="provider" value="#{activityController.activity.provider}" />
+
+                                        <p:outputLabel for="state" value="State: "/>
+                                        <h:outputText id="state" value="#{activityController.activity.state.toString()}" />
+
+
+                                        <p:outputLabel for="aircraftinfo" value="Aircraft Description: "/>
+                                        <h:outputText id="aircraftinfo" value="#{activityController.activity.aircraftInfo}" />
+
+                                        <p:outputLabel for="activityinfo" value="Activity Description: "/>
+                                        <h:outputText id="activityinfo" value="#{activityController.activity.activityInfo}" />
+                                    </h:panelGrid>
+                                </div><!--general-activity-info-->
+
+                                <div id="specified-activity-info">
+                                    <h:panelGrid columns="2" cellpadding="20">
+                                        <c:choose>
+                                            <c:when test="#{activityController.activity.type.toString() == 'Joy Flight'}">
+                                                <p:outputLabel for="capacity" value="Capacity:"/>
+                                                <h:outputText id="capacity" value="#{activityController.activity.capacity}"/>
+                                            </c:when>
+                                            
+                                            <c:when test="#{activityController.activity.type.toString() == 'Pilot Training'}">
+                                                <p:outputLabel for="certificate" value="Certificate: "/>
+                                                <h:outputText id="certificate" value="#{activityController.activity.certificationInfo}"/>
+                                                <p:outputLabel for="duration" value="Duration: "/>
+                                                <h:outputText id="duration" value="#{activityController.activity.duration}"/>
+                                            </c:when>
+                                        </c:choose>                                         
+                                    </h:panelGrid>
+                                </div><!--specified-activity-info-->
+
+                                <h:panelGrid columns="1">
+                                    <p:button value="Back" outcome="activitylist"/>
+                                </h:panelGrid>
+                            </h:form>
+                        </div><!--activity-form-section-->
+                    </div><!--center-component-->
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>

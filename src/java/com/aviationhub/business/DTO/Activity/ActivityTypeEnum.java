@@ -11,8 +11,8 @@ package com.aviationhub.business.DTO.Activity;
  * @author ian
  */
 public enum ActivityTypeEnum {
-    PILOTTRAINING("Pilot training"),
-    JOYFLIGHT("Joy flight");
+    PILOTTRAINING("Pilot Training"),
+    JOYFLIGHT("Joy Flight");
     
     private final String typeAsString;
     private ActivityTypeEnum(String typeAsString) {

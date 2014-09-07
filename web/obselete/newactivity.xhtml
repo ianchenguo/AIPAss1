@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <f:view contentType="text/html">
+        <h:head>
+            <title>New Activity</title>
+            <h:outputStylesheet library="css" name="styles.css"/>
+            <f:metadata>
+                <f:viewAction action="#{activityController.init(param.type)}"/>
+            </f:metadata>
+        </h:head>
+
+        <h:body>
+            <p:layout fullPage="true">
+                <!-- the top, bottom, left and right compartments -->
+                <p:layoutUnit position="north" size="50" header="The Aviation Hub"/>
+                <p:layoutUnit position="west" size="200" />
+                <p:layoutUnit position="east" size="200" />
+                <p:layoutUnit position="south" size="50" style="text-align: center; ">
+                    <h:outputText value="AIP Assignment 1 Chen Guo 11670179" style="font-size: 70%"/>
+                </p:layoutUnit>
+                <!-- the center compartments -->
+                <p:layoutUnit position="center" styleClass="verticalCentreParent">
+                    <!-- the navigation bread crumb -->
+                    <div class="navigation-breadcrumb">
+                        <h:form>
+                            <p:breadCrumb>
+                                <p:menuitem value="Home" url="/faces/index.xhtml"/>
+                                <p:menuitem value="Activity List" url="#"/>
+                            </p:breadCrumb>
+                        </h:form> 
+                    </div><!--navigation-breadcrumb-->
+                    <!-- the main content of the center compartment -->
+                    <div class="center-content">
+                        <h1>New #{activityController.activity.type.toString()}</h1>
+
+                        <div id="activity-form-section">
+                            <h:form id="activity-detail-form">
+                                <p:panelGrid>
+                                    <p:row>
+                                        <p:column colspan="20"><p:outputLabel for="name" value="Title: "/></p:column>                                                
+                                        <p:column colspan="50"><p:inputText id="name" value="#{activityController.activity.name}" label="name"/></p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column colspan="20"><p:outputLabel for="provider" value="Provider: "/></p:column>
+                                        <p:column colspan="50"><p:inputText id="provider" value="#{activityController.activity.provider}" label="provider"/></p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column colspan="20"><p:outputLabel for="state" value="State: "/></p:column>
+                                        <p:column colspan="50">                                            
+                                            <h:selectOneRadio id="state" value="#{activityController.activity.state}" label="state">
+                                                <f:selectItem itemLabel="Upcoming" itemValue="UPCOMING" />
+                                                <f:selectItem itemLabel="Available" itemValue="AVAILABLE" />
+                                                <f:selectItem itemLabel="Expired" itemValue="EXPIRED" />
+                                            </h:selectOneRadio>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column colspan="20"><p:outputLabel for="aircraftinfo" value="Aircraft Description: "/></p:column>
+                                        <p:column colspan="50"><p:inputTextarea id="aircraftinfo" value="#{activityController.activity.aircraftInfo}" label="Aircraftinfo"  rows="5" cols="50"/></p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column colspan="20"><p:outputLabel for="activityinfo" value="Activity Description: "/></p:column>
+                                        <p:column colspan="50"><p:inputTextarea id="activityinfo" value="#{activityController.activity.activityInfo}" label="Activityinfo" rows="5" cols="50"/></p:column>
+                                    </p:row>
+
+                                    <c:choose>
+                                        <!--construct joy flight related options-->
+                                        <c:when test="#{activityController.activity.type.toString() == 'Joy Flight'}">
+                                            <p:row>
+                                                <p:column colspan="20"><p:outputLabel for="capacity" value="Capacity:"/></p:column>
+                                                <p:column colspan="50"><p:inputText id="capacity" value="#{activityController.activity.capacity}"/></p:column>                                                            
+                                            </p:row>
+                                        </c:when>
+                                        <!--construct pilot training related options-->
+                                        <c:when test="#{activityController.activity.type.toString() == 'Pilot Training'}">
+                                            <p:row>
+                                                <p:column colspan="20"><p:outputLabel for="certificate" value="Certificate: "/></p:column>
+                                                <p:column colspan="50"><p:inputText id="certificate" value="#{activityController.activity.certificationInfo}"/></p:column>
+                                            </p:row> 
+                                            <p:row>
+                                                <p:column colspan="20"><p:outputLabel for="duration" value="Duration: "/></p:column>
+                                                <p:column colspan="50"><p:inputText id="duration" value="#{activityController.activity.duration}"/></p:column>
+                                            </p:row>  
+                                        </c:when>
+                                    </c:choose> 
+
+                                    <p:row>
+                                        <p:column colspan="20"><p><p:spacer width="10"/></p></p:column>
+                                        <p:column colspan="50">
+                                            <p:button value="Cancle" outcome="activitylist" style="float: right;"/>
+                                            <p:spacer width="20" style="float: right;"/>
+                                            <p:commandButton action="#{activityController.createActivity()}" value="Create" style="float: right;"/>                                            
+                                        </p:column>
+                                    </p:row> 
+                                </p:panelGrid>
+                            </h:form>
+                        </div><!--activity-form-section-->
+                    </div><!--center-component-->
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>

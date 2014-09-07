@@ -6,11 +6,16 @@
 
 package com.aviationhub.business.DTO.Activity;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 /**
  *
  * @author ian
  */
 public class JoyFlightDTO extends ActivityDTO{
+    @Max(50)
+    @Min(1)
     private int capacity;
     
     public JoyFlightDTO() {

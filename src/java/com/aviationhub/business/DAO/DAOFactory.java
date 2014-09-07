@@ -3,23 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.aviationhub.business.DAO;
+
+import com.aviationhub.business.DTO.Activity.ActivityTypeEnum;
+import java.io.Serializable;
 
 /**
  * Abstract DAO factory class
+ *
  * @author ian
  */
-public abstract class DAOFactory {
-   
-    //abstract methods to get knownDAO object
-    public abstract AdminDAO getAdminDAO();
-    public abstract JoyFlightDAO getJoyFlightDAO();
-    public abstract PilotTrainingDAO getPilotTrainingDAO();
-    
+public abstract class DAOFactory implements Serializable {
+
+    //abstract methods to get known DAO object
+    public abstract AccountDAO getAdminDAO();
+
+    public abstract ActivityDAO getActivityDAO(ActivityTypeEnum type);
+
     //return a concrete DAO factory object
-    public static DAOFactory getFactory(DAODBTypeEnum dbType) {
-        switch(dbType) {
+    public static DAOFactory getFactory(DBTypeEnum dbType) {
+        switch (dbType) {
             case JAVADB:
                 return new JavaDBDAOFactory();
             default:

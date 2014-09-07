@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="pagetemplate/modifyactivitytemplate.xhtml">
+
+        <!--define  meta data-->
+        <ui:define name="metadata">
+            <f:metadata>
+                
+                <f:viewAction action="#{activityController.init(param.type)}"/>
+            </f:metadata>
+        </ui:define>
+
+        <ui:define name="title">New Activity</ui:define>
+
+        <!-- define the center content title -->
+        <ui:define name="center-title">
+            New #{activityController.activity.type.toString()}
+        </ui:define>
+
+        <ui:define name="form-button-action">
+            <p:commandButton action="#{activityController.createActivity()}" value="Create" style="float: right;" ajax="false"/>
+        </ui:define>
+
+    </ui:composition>
+</html>

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.aviationhub.business.DAO;
 
 import com.aviationhub.business.DTO.Activity.ActivityDTO;
@@ -14,13 +13,17 @@ import javax.naming.NamingException;
 /**
  *
  * @author ian
+ * @param <T>
  */
-public interface JoyFlightDAO {
-    
-    public List findAll() throws NamingException, SQLException;
-    public ActivityDTO findJoyFlight(Integer id) throws NamingException, SQLException;
-    public void addJoyFlight(ActivityDTO activityDTO) throws NamingException, SQLException;
-    public void deleteJoyFlight(Integer id) throws NamingException, SQLException;
-    public void updateJoyFlight(Integer id,ActivityDTO activityDTO) throws NamingException, SQLException;
+public interface ActivityDAO<T> {
 
+    public List findAll() throws NamingException, SQLException;
+
+    public ActivityDTO findActivity(Integer id) throws NamingException, SQLException;
+
+    public void addActivity(T activityDTO) throws NamingException, SQLException;
+
+    public void deleteActivity(Integer id) throws NamingException, SQLException;
+
+    public void updateActivity(T activityDTO) throws NamingException, SQLException;
 }

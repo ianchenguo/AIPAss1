@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Waiting List</title>
+    </h:head>
+    <h:body>
+        <h1>New Group</h1>
+        <h:form>
+            <p>
+                <label>Group Name:
+                    <p:inputText 
+                        id="name" 
+                        value="#{adminController.admin.username}" 
+                        validatorMessage="You must enter a name"/>
+                </label>
+                <p:message for="name" />
+            </p>
+            
+            <p>
+                <p:commandButton value="Save" action="/faces/index.xhtml" ajax="false" />
+            </p>
+        </h:form>
+    </h:body>
+</html>

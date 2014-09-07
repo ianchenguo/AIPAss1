@@ -5,7 +5,8 @@
  */
 package com.aviationhub.business.DAO;
 
-import com.aviationhub.business.DTO.AdminDTO;
+import com.aviationhub.business.DTO.Account.AccountDTO;
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,17 +19,19 @@ import javax.sql.DataSource;
  *
  * @author ian
  */
-class JavaDBAdminDAO implements AdminDAO {
+class JavaDBAccountDAO implements Serializable,AccountDAO {
 
-    private static final String SELECT_ADMIN = "select username,password,fullname,employeeid,email "
-            + "from aip.admin "
-            + "where username=?";
-    private static final String INSERT_ADMIN = "insert into aip.admin(username,password,fullname,employeeid,email) "
-            + "values(?,?,?,?,?)";
+    private static final String SELECT_ADMIN = "select username,groupname,password,fullname,employeeid,email "
+            + "from aip.account "
+            + "where username=?"
+            + "and groupname='ADMIN'";
+    private static final String INSERT_ACCOUNT = "insert into aip.account(username,groupname,password,fullname,employeeid,email) "
+            + "values(?,?,?,?,?,?)";
 
-    private AdminDTO createDTO(ResultSet rs) throws SQLException {
-        AdminDTO result = new AdminDTO();
+    private AccountDTO createDTO(ResultSet rs) throws SQLException {
+        AccountDTO result = new AccountDTO();
         result.setUsername(rs.getString("username"));
+        result.setUsername(rs.getString("groupname"));
         result.setPassword(rs.getString("password"));
         result.setFullName(rs.getString("fullname"));
         result.setEmployeeId(rs.getString("employeeid"));
@@ -50,7 +53,7 @@ class JavaDBAdminDAO implements AdminDAO {
      * @throws java.sql.SQLException
      */
     @Override
-    public AdminDTO findAccount(String username) throws SQLException, NamingException {
+    public AccountDTO findAccount(String username) throws SQLException, NamingException {
 
         DataSource ds = JavaDBDAOFactory.createDataSource();
         try (Connection conn = ds.getConnection();
@@ -60,10 +63,12 @@ class JavaDBAdminDAO implements AdminDAO {
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
+                    System.out.println("I FOUND A ROW!!!!!!!!!!!!!!!!!!!!!!!!!");
                     // if find the user
                     return createDTO(rs);
                 } else {
                     // if cannot find the user
+                    System.out.println("I DIDN'T FIND A ROW!!!!!!!!!!!!!!!!!!!!!!!!!");
                     return null;
                 }
             }
@@ -74,23 +79,24 @@ class JavaDBAdminDAO implements AdminDAO {
 
     /**
      *
-     * @param adminDTO
+     * @param accountDTO
      * @throws NamingException
      * @throws SQLException
      */
     @Override
-    public void addAccount(AdminDTO adminDTO) throws NamingException, SQLException {
+    public void addAccount(AccountDTO accountDTO) throws NamingException, SQLException {
 
         DataSource ds = JavaDBDAOFactory.createDataSource();
         try (Connection conn = ds.getConnection();
-                PreparedStatement ps = conn.prepareStatement(INSERT_ADMIN)) {
+                PreparedStatement ps = conn.prepareStatement(INSERT_ACCOUNT)) {
             conn.setAutoCommit(false);
             //populate the binding variable
-            ps.setString(1, adminDTO.getUsername());
-            ps.setString(2, adminDTO.getPassword());
-            ps.setString(3, adminDTO.getFullName());
-            ps.setString(4, adminDTO.getEmployeeId());
-            ps.setString(5, adminDTO.getEmail());
+            ps.setString(1, accountDTO.getUsername());
+            ps.setString(2, accountDTO.getGroupname().name());
+            ps.setString(3, accountDTO.getPassword());
+            ps.setString(4, accountDTO.getFullName());
+            ps.setString(5, accountDTO.getEmployeeId());
+            ps.setString(6, accountDTO.getEmail());
             //execute the insertion
             ps.executeUpdate();
             conn.commit();
@@ -105,7 +111,7 @@ class JavaDBAdminDAO implements AdminDAO {
     }
 
     @Override
-    public void updateAccount(Integer id, AdminDTO activityDTO) throws NamingException, SQLException {
+    public void updateAccount(Integer id, AccountDTO activityDTO) throws NamingException, SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

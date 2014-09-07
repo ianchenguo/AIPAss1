@@ -7,6 +7,7 @@
 package com.aviationhub.business.DTO.Activity;
 
 import java.io.Serializable;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -14,11 +15,15 @@ import java.io.Serializable;
  */
 public abstract class ActivityDTO implements Serializable{
     int id;
+    @Size(max = 255)
     String name;
     ActivityTypeEnum type;
     ActivityStateEnum state;
+    @Size(max = 255)
     String provider;
+    @Size(max = 255)
     String aircraftInfo;
+    @Size(max = 255)
     String activityInfo;
 
     /**

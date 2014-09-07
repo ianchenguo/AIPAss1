@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package com.aviationhub.business.DAO;
+package com.aviationhub.business.DTO.Account;
 
 /**
  *
  * @author ian
  */
-public enum DAODBTypeEnum {
-    JAVADB;
+public enum AccountEnum {
+    ADMIN;
 }

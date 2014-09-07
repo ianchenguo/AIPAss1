@@ -6,8 +6,32 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>adminlogin</from-outcome>
-            <to-view-id>/adminlogin/adminlogin.xhtml</to-view-id>
+            <from-outcome>registeradmin</from-outcome>
+            <to-view-id>/adminregistration/registeradmin.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/adminregistration/registeradmin.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>index</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/adminoperations/activity/updateactivity.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>activitylist</from-outcome>
+            <to-view-id>/adminoperations/activity/activitylist.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/adminoperations/activity/newactivity.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>activitylist</from-outcome>
+            <to-view-id>/adminoperations/activity/activitylist.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
     </navigation-rule>
 </faces-config>

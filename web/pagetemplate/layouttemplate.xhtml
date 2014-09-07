@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="styles.css"/>
+        <!-- to insert custom metadata -->
+        <ui:insert name="metadata"/>
+        <!-- to insert custom page title -->
+        <title><ui:insert name="title"/></title>
+    </h:head>
+
+    <h:body>
+        <p:layout fullPage="true">
+            <!-- the fixed header -->
+            <p:layoutUnit position="north" size="50" header="The Aviation Hub"/>
+
+            <!-- the customisable left compartment -->
+            <p:layoutUnit position="west" size="250">
+                <ui:insert name="left">left</ui:insert>
+            </p:layoutUnit>
+
+            <!-- the fixed footer -->
+            <p:layoutUnit position="south" size="50" style="text-align: center; ">
+                <h:outputText value="AIP Assignment 1 Chen Guo 11670179" style="font-size: 70%"/>
+            </p:layoutUnit>
+
+            <!-- the customisable center compartment -->
+            <p:layoutUnit position="center" styleClass="verticalCentreParent">
+                <ui:insert name="center">center</ui:insert>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

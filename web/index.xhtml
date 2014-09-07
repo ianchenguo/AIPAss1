@@ -1,32 +1,71 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <f:view contentType="text/html">
-        <h:head>
-            <title>Chen Guo 11670179</title>
-            <h:outputStylesheet library="css" name="styles.css"/>
-        </h:head>
-        <h:body>
-            <p:layout fullPage="true">
-                <p:layoutUnit position="north" size="50" header="The Aviation Hub"/>
-                <p:layoutUnit position="west" size="200" />
-                <p:layoutUnit position="east" size="200" />
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 
-                <p:layoutUnit position="south" size="50" style="text-align: center; ">
-                    <h:outputText value="AIP Assignment 1 Chen Guo 11670179" style="font-size: 70%"/>
-                </p:layoutUnit>
+    <ui:composition template="./pagetemplate/layouttemplate.xhtml">
+        <ui:define name="metadata">
+        </ui:define>
+        <!-- define the center content title -->
+        <ui:define name="title">
+            Administrator Login
+        </ui:define>
+        <!-- define the center content -->
+        <ui:define name="center">
+            <h1>Administrator Login</h1>
+            <!-- show global validation messages -->
+            <p:messages />
+            <p:panel>
+                <h:form id="admin-login-form" >         
+                    <h:panelGrid columns="3" cellpadding="5">
+                        <p:outputLabel for="username" value="Username: "/>
+                        <p:inputText id="username" 
+                                     value="#{adminController.admin.username}"
+                                     required="true"
+                                     requiredMessage="Username cannot be empty"/>
+
+                        <p:watermark for="username" value="Enter username"/>
 
 
-                <p:layoutUnit position="center" styleClass="verticalCentreParent">
-                    <div class="verticalCentre">
-                        <p:button value="Admin login" outcome="adminlogin"/>
-                    </div>
-                </p:layoutUnit>
-            </p:layout>
-        </h:body>
-    </f:view>
+                        <p:outputLabel for="password" value="Password: "/>
+                        <p:password id="password" 
+                                    value="#{adminController.admin.password}" 
+                                    required="true"
+                                    requiredMessage="Password cannot be empty"
+                                    label="Password" />
+
+                        <p:watermark for="password" value="Enter password"/>
+
+
+                        <h:outputText></h:outputText>
+                        <p:commandButton id="submit" action="#{adminController.login()}" value="login" ajax="false" style="float: right;"/>
+
+                        <h:outputText></h:outputText>
+                        <h:outputText></h:outputText>
+                        <h:link id="Register" value="Register" outcome="registeradmin" style="font-size: 70%;float: right;"/>
+                    </h:panelGrid>
+                </h:form><!--admin-login-form-->
+
+                <h:form id="admin-logout-form" >         
+                    <h:panelGrid columns="3" cellpadding="5">
+                        <p:outputLabel for="username" value="Username: "/>
+                        <p:outputLabel id="username" value="#{adminController.admin.username}"/>
+
+
+                        <h:outputText></h:outputText>
+                        <p:commandButton id="submit" action="#{adminController.logout()}" value="logout" ajax="false" style="float: right;"/>
+
+                    </h:panelGrid>
+                </h:form><!--admin-login-form-->
+
+
+
+            </p:panel>
+        </ui:define>
+
+    </ui:composition>
+
 </html>
-
