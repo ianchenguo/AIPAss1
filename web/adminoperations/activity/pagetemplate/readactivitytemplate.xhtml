@@ -28,55 +28,55 @@
                 <h1><ui:insert name="center-title"/></h1>
 
                 <div id="general-activity-info" style="margin: 20px;">
-                    <h:form>
-                        <p:panelGrid>
+                    <h:form  id="single-activity-form">
+                        <p:panelGrid id="single-activity-table">
                             <p:row><!-- name row -->
-                                <p:column colspan="20"><p:outputLabel for="name" value="Title: "/></p:column>                                                
-                                <p:column colspan="50"><h:outputText id="name" value="#{activityController.activity.name}"/></p:column>
+                                <p:column ><p:outputLabel for="name" value="Title: "/></p:column>                                                
+                                <p:column ><h:outputText id="name" value="#{activityController.activity.name}"/></p:column>
                             </p:row>
 
                             <p:row><!-- type row -->
-                                <p:column colspan="20"><p:outputLabel for="type" value="Type: "/></p:column>                                                
-                                <p:column colspan="50"><h:outputText id="type" value="#{activityController.activity.type.toString()}"/></p:column>
+                                <p:column ><p:outputLabel for="type" value="Type: "/></p:column>                                                
+                                <p:column ><h:outputText id="type" value="#{activityController.activity.type.toString()}"/></p:column>
                             </p:row>
 
                             <p:row><!-- provider row -->
-                                <p:column colspan="20"><p:outputLabel for="provider" value="Provider: "/></p:column>
-                                <p:column colspan="50"><h:outputText id="provider" value="#{activityController.activity.provider}"/></p:column>
+                                <p:column ><p:outputLabel for="provider" value="Provider: "/></p:column>
+                                <p:column ><h:outputText id="provider" value="#{activityController.activity.provider}"/></p:column>
                             </p:row>
 
                             <p:row><!-- state row -->
-                                <p:column colspan="20"><p:outputLabel for="state" value="State: "/></p:column>
-                                <p:column colspan="50"><h:outputText id="state" value="#{activityController.activity.state.toString()}"/></p:column>
+                                <p:column ><p:outputLabel for="state" value="State: "/></p:column>
+                                <p:column ><h:outputText id="state" value="#{activityController.activity.state.toString()}"/></p:column>
                             </p:row>
 
                             <p:row><!-- aircraft description row -->
-                                <p:column colspan="20"><p:outputLabel for="aircraftinfo" value="Aircraft Description: "/></p:column>
-                                <p:column colspan="50"><h:outputText id="aircraftinfo" value="#{activityController.activity.aircraftInfo}"/></p:column>
+                                <p:column ><p:outputLabel for="aircraftinfo" value="Aircraft Description: "/></p:column>
+                                <p:column ><h:outputText id="aircraftinfo" value="#{activityController.activity.aircraftInfo}"/></p:column>
                             </p:row>
 
                             <p:row><!-- activity description row -->
-                                <p:column colspan="20"><p:outputLabel for="activityinfo" value="Activity Description: "/></p:column>
-                                <p:column colspan="50"><h:outputText id="activityinfo" value="#{activityController.activity.activityInfo}"/></p:column>
+                                <p:column ><p:outputLabel for="activityinfo" value="Activity Description: "/></p:column>
+                                <p:column ><h:outputText id="activityinfo" value="#{activityController.activity.activityInfo}"/></p:column>
                             </p:row>
 
                             <c:choose>
                                 <!--construct joy flight related options-->
                                 <c:when test="#{activityController.activity.type.toString() == 'Joy Flight'}">
                                     <p:row><!-- capacity row -->
-                                        <p:column colspan="20"><p:outputLabel for="capacity" value="Capacity:"/></p:column>
-                                        <p:column colspan="50"><h:outputText id="capacity" value="#{activityController.activity.capacity}"/></p:column>                                                            
+                                        <p:column ><p:outputLabel for="capacity" value="Capacity:"/></p:column>
+                                        <p:column ><h:outputText id="capacity" value="#{activityController.activity.capacity}"/></p:column>                                                            
                                     </p:row>
                                 </c:when>
                                 <!--construct pilot training related options-->
                                 <c:when test="#{activityController.activity.type.toString() == 'Pilot Training'}">
                                     <p:row> <!-- certificate row -->
-                                        <p:column colspan="20"><p:outputLabel for="certificate" value="Certificate: "/></p:column>
-                                        <p:column colspan="50"><h:outputText id="certificate" value="#{activityController.activity.certificationInfo}"/></p:column>
+                                        <p:column ><p:outputLabel for="certificate" value="Certificate: "/></p:column>
+                                        <p:column ><h:outputText id="certificate" value="#{activityController.activity.certificationInfo}"/></p:column>
                                     </p:row> 
                                     <p:row> <!-- duration row -->
-                                        <p:column colspan="20"><p:outputLabel for="duration" value="Duration: "/></p:column>
-                                        <p:column colspan="50"><h:outputText id="duration" value="#{activityController.activity.duration}"/></p:column>
+                                        <p:column ><p:outputLabel for="duration" value="Duration: "/></p:column>
+                                        <p:column ><h:outputText id="duration" value="#{activityController.activity.duration}"/></p:column>
                                     </p:row>  
                                 </c:when>
                             </c:choose> 
@@ -85,8 +85,13 @@
                             <h:inputHidden value="#{activityController.activity.id}"/>
 
                             <p:row>
-                                <p:column colspan="20"><ui:insert name="form-button-action"/></p:column>
-                                <p:column colspan="50"><p:button value="Back" outcome="activitylist" style="float: right;"/> </p:column>
+                                <p:column />
+
+                                <p:column>
+                                    <p:button value="Back" outcome="activitylist" style="float: right;"/>
+                                    <p:spacer height="1" width="10" style="float: right;"/>
+                                    <ui:insert name="form-button-action"/>
+                                </p:column>
                             </p:row>
                         </p:panelGrid>
                     </h:form>

@@ -77,7 +77,7 @@ public class AdminController implements Serializable {
             }
             //login the account
             request.login(admin.getUsername(), admin.getPassword());
-            return "adminoperations/welcome?faces-redirect=true";
+            return "welcome";
 
         } catch (ServletException e) {
             showError("Incorrect username or password");

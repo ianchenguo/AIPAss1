@@ -18,7 +18,7 @@ public class AccountDTO implements Serializable{
     private int id;
     @Size(min = 3,max = 255, message = "size of username must be between 3 and 255")
     private String username;
-    @Size(min = 6,max = 12, message = "size of password must be between 6 and 12")
+    @Size(min = 6,max = 20, message = "size of password must be between 6 and 20")
     private String password;
     @Size(max = 255)
     private String fullName;

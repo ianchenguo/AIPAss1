@@ -25,7 +25,24 @@ and open the template in the editor.
     margin: auto;
 }
 
-/*remove p:panelGrid borders*/
+
+/* alter the table style of p:panelGrid for single activity */
+#single-activity-form\3a single-activity-table {
+    max-width: 600px;
+    table-layout: auto;
+}
+
+#single-activity-form\3a single-activity-table tr td:nth-child(1) {
+    width: 200px;
+}
+
+#single-activity-form\3a single-activity-table td,#single-activity-form\3a single-activity-table tr {
+    word-break: break-all;
+    overflow-wrap: break-word;
+    border: 1px solid #a8a8a8 !important;
+}
+
+/*remove general p:panelGrid borders*/
 .ui-panelgrid tr, .ui-panelgrid td {
     border:0 !important;
 }

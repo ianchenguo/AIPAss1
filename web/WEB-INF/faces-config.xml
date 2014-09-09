@@ -19,49 +19,40 @@
             <redirect/>
         </navigation-case>
     </navigation-rule>
-    
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>logout</from-outcome>
-            <to-view-id>/stafflogin.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <from-view-id>/stafflogin.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>registeradmin</from-outcome>
-            <to-view-id>/adminregistration/registeradmin.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>registeradmin</from-outcome>
-            <to-view-id>/adminregistration/registeradmin.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <from-view-id>/adminregistration/registeradmin.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>stafflogin</from-outcome>
-            <to-view-id>/stafflogin.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>stafflogin</from-outcome>
-            <to-view-id>/stafflogin.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>index</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/stafflogin/stafflogin.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>stafflogin</from-outcome>
+            <to-view-id>/stafflogin/stafflogin.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/stafflogin/stafflogin.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>registeradmin</from-outcome>
+            <to-view-id>/stafflogin/registeradmin.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>welcome</from-outcome>
+            <to-view-id>/adminoperations/welcome.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>
