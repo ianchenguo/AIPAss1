@@ -10,7 +10,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 /**
- *
+ * A concrete DTO for joy flight activities
  * @author ian
  */
 public class JoyFlightDTO extends ActivityDTO{
@@ -18,6 +18,9 @@ public class JoyFlightDTO extends ActivityDTO{
     @Min(1)
     private int capacity;
     
+    /**
+     * override the default constructor
+     */
     public JoyFlightDTO() {
         type = ActivityTypeEnum.JOYFLIGHT;
                 

@@ -21,7 +21,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
- *
+ * A concrete implementation of joy flight activity DAOs for JavaDB
  * @author ian
  */
 class JavaDBJoyFlightDAO implements Serializable, GenericDAO<JoyFlightDTO, Integer> {
@@ -122,7 +122,7 @@ class JavaDBJoyFlightDAO implements Serializable, GenericDAO<JoyFlightDTO, Integ
             try (ResultSet keyResultSet = ps1.getGeneratedKeys()) {
                 if (keyResultSet.next()) {
                     activityID = (int) keyResultSet.getInt(1);
-                    System.out.println(activityID);
+                    //System.out.println(activityID);
                 }
             }
             //insert into the child table

@@ -4,13 +4,16 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <!-- activity deletion page and activity detail page share the following sub template-->
     <ui:composition template="pagetemplate/readactivitytemplate.xhtml">
 
         <!--define meta data-->
         <ui:define name="metadata">
             <f:metadata><f:viewAction action="#{activityController.loadActivity(param.id,param.type)}"/></f:metadata>
         </ui:define>
-        
+
+        <!-- define the page title -->
         <ui:define name="title">Delete Activity</ui:define>
 
         <!-- define the center content title -->

@@ -8,10 +8,16 @@ package com.aviationhub.business.DTO.Activity;
 
 
 /**
- *
+ * A simple factory class to create specific type of activities
  * @author ian
  */
 public class ActivityDTOSimpleFactory {
+
+    /**
+     * Create an activity DTO based on selected activity type
+     * @param type
+     * @return
+     */
     public static ActivityDTO createActivity(ActivityTypeEnum type) {
  
         if (type == ActivityTypeEnum.JOYFLIGHT) {

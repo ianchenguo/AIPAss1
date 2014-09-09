@@ -6,13 +6,12 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
+    <!-- activity list page uses the following sub template -->
     <ui:composition template="./../pagetemplate/adminoptionstemplate.xhtml">
-
         <!-- define the center content title -->
         <ui:define name="title">
             Activity List
         </ui:define>
-       
 
         <!-- define the center content -->
         <ui:define name="center">
@@ -53,7 +52,7 @@
                             </h:link>
                         </p:column>
 
-                        <p:column><!-- link to the delete page of a single activity -->
+                        <p:column><!-- link to the deletion page of a single activity -->
                             <h:link value="delete" outcome="deleteactivity" style="color: red;">
                                 <f:param name="type" value="#{activity.type.name()}"/>
                                 <f:param name="id" value="#{activity.id}"/>
@@ -62,12 +61,15 @@
                     </p:dataTable>
                 </div><!--activity-list-section-->
 
-                <p></p>
-                <!-- a form to specify which type of new activity to create -->
-                <div id="new-activity-section">
+                <!-- divide the two different sections -->
+                <p:spacer/>
+                
+                <!-- a form as the entry of new activity creation -->
+                <div id="new-activity-section" style="min-width: 300px;">
                     <h:form id="new-activity-form">
                         <p:panel id="basic" header="New Activity" style="margin-bottom:20px">
                             <p:panelGrid>
+                                <!-- specify activity type -->
                                 <p:row>
                                     <p:column>
                                         <p:outputLabel for="activity-type" value="Activity Type: "/>
@@ -79,7 +81,7 @@
                                         </p:selectOneMenu>
                                     </p:column>
                                 </p:row>
-
+                                <!-- navigate to activity creation page -->
                                 <p:row>
                                     <p:column><p:spacer/></p:column>
                                     <p:column>

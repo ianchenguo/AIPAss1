@@ -10,7 +10,7 @@ import java.io.Serializable;
 import javax.validation.constraints.Size;
 
 /**
- *
+ * An abstract DTO class for all types of activities
  * @author ian
  */
 public abstract class ActivityDTO implements Serializable{
@@ -26,6 +26,7 @@ public abstract class ActivityDTO implements Serializable{
     @Size(max = 255)
     String activityInfo;
 
+    //getters and setters
     /**
      * @return the id
      */

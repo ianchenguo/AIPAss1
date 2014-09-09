@@ -6,10 +6,13 @@
 package com.aviationhub.business.DAO;
 
 /**
- *
+ * An enum type defining known database driver
  * @author ian
  */
 public enum DBTypeEnum {
 
+    /**
+     * javadb
+     */
     JAVADB;
 }

@@ -3,9 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
+    <!-- this page uses the base layout template -->
     <ui:composition template="./../pagetemplate/layouttemplate.xhtml">
         <!-- define the center content title -->
         <ui:define name="title">
@@ -13,69 +13,75 @@
         </ui:define>
         <!-- define the center content -->
         <ui:define name="center">
-            <h1>Administrator Registration</h1>
-            <!-- show global validation messages -->
-            <p:messages globalOnly="true"/>
-            <p:panel>
-                <h:form id="adminRegistrationForm">
-                    <h:panelGrid columns="4">
-                        <p:outputLabel for="username" value="Username: "/>
-                        <p:inputText id="username" 
-                                     value="#{adminController.admin.username}" 
-                                     required="true"
-                                     requiredMessage="Username cannot be empty"
-                                     label="username"
-                                     
-                                     />
-                        <p:message for="username"/>
-                        <p:watermark for="username" value="Enter username"/>
+            <div class="central-placed-content" style="margin: auto; width: 50%;">
+                
+                <h1>Administrator Registration</h1>
+                
+                <!-- show global validation messages -->
+                <p:messages globalOnly="true"/>
+                <!-- staff registration form -->
+                <p:panel style="min-width: 400px;">
+                    <h:form id="adminRegistrationForm" >
+                        <h:panelGrid columns="4">
+                            <p:outputLabel for="username" value="Username: "/>
+                            <p:inputText id="username" 
+                                         value="#{adminController.admin.username}" 
+                                         required="true"
+                                         requiredMessage="Username cannot be empty"
+                                         label="username"/>
+                            <p:message for="username"/>
+                            <p:watermark for="username" value="Enter username"/>
 
 
-                        <p:outputLabel for="password" value="Password: "/>
-                        <p:password id="password" 
-                                    value="#{adminController.admin.password}" 
-                                    required="true"
-                                    requiredMessage="Password cannot be empty"
-                                    label="password"/>
-                        <p:message for="password"/>
-                        <p:watermark for="password" value="Enter password"/>
+                            <p:outputLabel for="password" value="Password: "/>
+                            <p:password id="password" 
+                                        value="#{adminController.admin.password}" 
+                                        required="true"
+                                        requiredMessage="Password cannot be empty"
+                                        label="password"/>
+                            <p:message for="password"/>
+                            <p:watermark for="password" value="Enter password"/>
 
-                        <p:outputLabel for="fullname" value="Full name: "/>
-                        <p:inputText id="fullname" 
-                                     required="true"
-                                     requiredMessage="Full name cannot be empty"
-                                     value="#{adminController.admin.fullName}" 
-                                     label="fullname"/>
-                        <p:message for="fullname"/>
-                        <p:watermark for="fullname" value="Enter full name"/>
+                            <p:outputLabel for="fullname" value="Full name: "/>
+                            <p:inputText id="fullname" 
+                                         required="true"
+                                         requiredMessage="Full name cannot be empty"
+                                         value="#{adminController.admin.fullName}" 
+                                         label="fullname"/>
+                            <p:message for="fullname"/>
+                            <p:watermark for="fullname" value="Enter full name"/>
 
 
-                        <p:outputLabel for="employeeid" value="Staff ID: "/>
-                        <p:inputText id="employeeid"
-                                     required="true"
-                                     requiredMessage="Employee ID cannot be empty"
-                                     value="#{adminController.admin.employeeId}"
-                                     label="employeeid"/>
-                        <p:message for="employeeid"/>
-                        <p:watermark for="employeeid" value="Enter employee id"/>
+                            <p:outputLabel for="employeeid" value="Staff ID: "/>
+                            <p:inputText id="employeeid"
+                                         required="true"
+                                         requiredMessage="Employee ID cannot be empty"
+                                         value="#{adminController.admin.employeeId}"
+                                         label="employeeid"/>
+                            <p:message for="employeeid"/>
+                            <p:watermark for="employeeid" value="Enter employee id"/>
 
-                        <p:outputLabel for="email" value="Email: "/>
-                        <p:inputText id="email"
-                                     required="true"
-                                     requiredMessage="Email cannot be empty"
-                                     value="#{adminController.admin.email}" 
-                                     label="email"/>
-                        <p:message for="email"/>
-                        <p:watermark for="email" value="Enter email"/>
-                    </h:panelGrid>
+                            <p:outputLabel for="email" value="Email: "/>
+                            <p:inputText id="email"
+                                         required="true"
+                                         requiredMessage="Email cannot be empty"
+                                         value="#{adminController.admin.email}" 
+                                         label="email"/>
+                            <p:message for="email"/>
+                            <p:watermark for="email" value="Enter email"/>
+                        </h:panelGrid>
 
-                    <h:panelGrid columns="2" cellpadding="10">
-                        <p:commandButton id="submit" action="#{adminController.register()}" value="register" ajax="false"/>
-                        <p:button id="cancle" value="Cancle" outcome="index"/>
-                    </h:panelGrid>
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <p:commandButton id="submit" action="#{adminController.register()}" value="register" ajax="false"/>
+                            <p:button id="cancle" value="Cancle" outcome="stafflogin"/>
+                        </h:panelGrid>
+                    </h:form>
+                </p:panel>
+            </div><!-- central-placed-content -->
+        </ui:define>
 
-                </h:form>
-            </p:panel>
+        <ui:define name="footer-links">
+            <h:link value="Staff connection" outcome="stafflogin"/>
         </ui:define>
 
     </ui:composition>

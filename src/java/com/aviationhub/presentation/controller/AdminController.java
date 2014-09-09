@@ -24,7 +24,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- *
+ * A page controller for pages related to account management
  * @author ian
  */
 @Named
@@ -44,15 +44,19 @@ public class AdminController implements Serializable {
         return (HttpServletRequest) context.getExternalContext().getRequest();
     }
 
+    /**
+     * Test if the current session has logged in
+     * @return boolean
+     */
     public boolean hasLoggedIn() {
-        System.out.println("KICK IN!");
+        //System.out.println("KICK IN!");
         HttpServletRequest request = getRequest();
-        System.out.println("get request user: " + request.getRemoteUser());
+        //System.out.println("get request user: " + request.getRemoteUser());
         return request.getRemoteUser() != null;
     }
 
     /**
-     *
+     * login current user
      * @return @throws NoSuchAlgorithmException
      */
     public String login() throws NoSuchAlgorithmException {
@@ -67,10 +71,11 @@ public class AdminController implements Serializable {
             //System.out.println(admin.getUsername());
             //System.out.println(admin.getPassword());
             //System.out.println(Encryption.hash256(admin.getPassword()));
-            //login the account
+            //if the current session has a user logged in, log the user out first
             if (hasLoggedIn()) {
                 logout();
             }
+            //login the account
             request.login(admin.getUsername(), admin.getPassword());
             return "adminoperations/welcome?faces-redirect=true";
 
@@ -81,10 +86,9 @@ public class AdminController implements Serializable {
     }
 
     /**
-     * Logs out the current user of the container-managed authentication.
-     *
-     * @return an outcome corresponding to the login page
-     * @throws ServletException if there is no currently logged in user
+     * log out the user
+     * @return navigate to the login page
+     * @throws ServletException
      */
     public String logout() throws ServletException {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -94,9 +98,10 @@ public class AdminController implements Serializable {
     }
 
     /**
-     *
-     * @return @throws NamingException
-     * @throws SQLException
+     * register a new user
+     * @return navigate to staff login page
+     * @throws NamingException
+     * @throws SQLException if the user exists
      * @throws java.security.NoSuchAlgorithmException
      */
     public String register() throws NamingException, SQLException, NoSuchAlgorithmException {
@@ -107,7 +112,7 @@ public class AdminController implements Serializable {
         try {
             admin.setPassword(Encryption.hash256(admin.getPassword()));
             adminDAO.addEntry(admin);
-            return "index";
+            return "stafflogin";
         } catch (NoSuchAlgorithmException | NamingException | SQLException e) {
             if (e.equals(e)) {
 
@@ -117,6 +122,7 @@ public class AdminController implements Serializable {
         }
     }
 
+    //a show-error method adapted from week 4 tutorial examples
     private void showError(String message) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(message));

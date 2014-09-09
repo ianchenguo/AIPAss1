@@ -13,7 +13,7 @@ import javax.inject.Inject;
 import javax.servlet.ServletException;
 
 /**
- *
+ * A controller of the side menu
  * @author ian
  */
 @Named(value = "sideMenuController")
@@ -27,13 +27,23 @@ public class SideMenuController implements Serializable{
     }
     
     @Inject AdminController adminController;
+
+    /**
+     * logout the user
+     * @return
+     * @throws ServletException
+     */
     public String logout() throws ServletException{
         
         return adminController.logout();
     }
 
     //setters and getters
-    public AdminController getAdminController() {
+    /**
+     * 
+     * @return
+     */
+        public AdminController getAdminController() {
         return adminController;
     }
     

@@ -4,17 +4,19 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-        <ui:composition>       
-            <h:form >
-                <p:menu>
-                    <p:submenu label="Tasks">
-                        <p:menuitem value="Activity List" url="/faces/adminoperations/activity/activitylist.xhtml"/>
-                    </p:submenu>
 
-                    <p:submenu label="Account [#{sideMenuController.adminController.admin.username}]">
-                        <p:menuitem value="Logout" action="#{sideMenuController.logout()}"/>
-                    </p:submenu>
-                </p:menu>
-            </h:form>
-        </ui:composition>
+    <!-- this partial page contains the side menu definition -->
+    <ui:composition>       
+        <h:form >
+            <p:menu>
+                <p:submenu label="Tasks">
+                    <p:menuitem value="Activity List" url="/faces/adminoperations/activity/activitylist.xhtml"/>
+                </p:submenu>
+
+                <p:submenu label="Account [#{sideMenuController.adminController.admin.username}]">
+                    <p:menuitem value="Logout" action="#{sideMenuController.logout()}"/>
+                </p:submenu>
+            </p:menu>
+        </h:form>
+    </ui:composition>
 </html>

@@ -9,7 +9,7 @@ package com.aviationhub.business.DTO.Activity;
 import javax.validation.constraints.Size;
 
 /**
- *
+ * A concrete DTO for joy flight activities
  * @author ian
  */
 public class PilotTrainingDTO extends ActivityDTO{
@@ -18,6 +18,9 @@ public class PilotTrainingDTO extends ActivityDTO{
     @Size(max = 255)
     private String certificationInfo;
 
+    /**
+     * override the default constructor
+     */
     public PilotTrainingDTO() {
         type = ActivityTypeEnum.PILOTTRAINING;
     }

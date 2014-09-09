@@ -19,7 +19,7 @@ import javax.inject.Named;
 import javax.naming.NamingException;
 
 /**
- *
+ * A page controller of the activity list page
  * @author ian
  */
 @Named
@@ -27,13 +27,10 @@ import javax.naming.NamingException;
 public class ActivityListController implements Serializable {
 
     private ActivityTypeEnum activityType;
-    private int activityID;
      
-    //populate the activity list on the page
-
     /**
-     *
-     * @return
+     * populate the activity list on the page
+     * @return a list of activity DTOs
      * @throws NamingException
      * @throws SQLException
      */
@@ -53,11 +50,9 @@ public class ActivityListController implements Serializable {
         return activityList;
     }
 
-    //navigate to new activity pages according to user select
-
     /**
-     *
-     * @return
+     * navigate to new activity pages according to user select
+     * @return navigate to activity creation page
      */
         public String createNewActivity() {
         if (activityType == ActivityTypeEnum.JOYFLIGHT) {

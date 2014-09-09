@@ -5,13 +5,15 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
+    <!-- new activity and activity update share the following sub template -->
     <ui:composition template="pagetemplate/modifyactivitytemplate.xhtml">
 
         <!--define  meta data-->
         <ui:define name="metadata">
             <f:metadata><f:viewAction action="#{activityController.loadActivity(param.id,param.type)}"/></f:metadata>
         </ui:define>
-        
+
+        <!-- define the page title -->
         <ui:define name="title">Update Activity</ui:define>
 
         <!-- define the center content title -->
@@ -19,6 +21,7 @@
             Update #{activityController.activity.type.toString()}
         </ui:define>
 
+        <!-- define a button to update existed activities -->
         <ui:define name="form-button-action">
             <p:commandButton action="#{activityController.updateActivity()}" value="Update" style="float: right;" ajax="false"/>
         </ui:define>

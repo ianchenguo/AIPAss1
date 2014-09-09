@@ -7,12 +7,24 @@
 package com.aviationhub.business.DTO.Activity;
 
 /**
- *
+ * An enum type defining known activity type
  * @author ian
  */
 public enum ActivityStateEnum {
+
+    /**
+     * available
+     */
     AVAILABLE("Available"),
+
+    /**
+     * upcoming
+     */
     UPCOMING("Upcoming"),
+
+    /**
+     * expired
+     */
     EXPIRED("Expired");
     
     private final String stateAsString;

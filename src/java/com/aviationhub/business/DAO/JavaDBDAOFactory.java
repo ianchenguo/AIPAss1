@@ -13,13 +13,13 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
- *
+ * A concrete DAO factory for all types of DAOs used with JavaDB
  * @author ian
  */
 class JavaDBDAOFactory extends DAOFactory {
 
     private static final String JNDI_NAME = "jdbc/aip";
-
+    // this concrete factory takes care of database source creation
     public static DataSource createDataSource() throws NamingException, SQLException {
         try {
             DataSource ds = InitialContext.doLookup(JNDI_NAME);
@@ -33,7 +33,6 @@ class JavaDBDAOFactory extends DAOFactory {
     public GenericDAO getAdminDAO() {
         return new JavaDBAccountDAO();
     }
-
 
     @Override
     public GenericDAO getActivityDAO(ActivityTypeEnum type) {

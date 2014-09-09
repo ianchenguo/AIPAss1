@@ -9,18 +9,31 @@ import com.aviationhub.business.DTO.Activity.ActivityTypeEnum;
 import java.io.Serializable;
 
 /**
- * Abstract DAO factory class
+ * The top level abstract DAO factory class
  *
  * @author ian
  */
 public abstract class DAOFactory implements Serializable {
 
-    //abstract methods to get known DAO object
+    /**
+     * An abstract method to get an adminDAO
+     *
+     * @return
+     */
     public abstract GenericDAO getAdminDAO();
 
+    /**
+     * An abstract method to get an activityDAO, depending on selected activity type
+     * @param type
+     * @return
+     */
     public abstract GenericDAO getActivityDAO(ActivityTypeEnum type);
 
-    //return a concrete DAO factory object
+    /**
+     * Return a concrete DAO factory object
+     * @param dbType
+     * @return
+     */
     public static DAOFactory getFactory(DBTypeEnum dbType) {
         switch (dbType) {
             case JAVADB:

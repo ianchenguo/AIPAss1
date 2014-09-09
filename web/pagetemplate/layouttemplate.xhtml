@@ -9,7 +9,7 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet library="css" name="styles.css"/>
-        <!-- to insert custom metadata -->
+        <!-- to insert custom meta data -->
         <ui:insert name="metadata"/>
         <!-- to insert custom page title -->
         <title><ui:insert name="title"/></title>
@@ -18,20 +18,25 @@
     <h:body>
         <p:layout fullPage="true">
             <!-- the fixed header -->
-            <p:layoutUnit position="north" size="50" header="The Aviation Hub"/>
+            <p:layoutUnit position="north" size="80" header="The Aviation Hub" style="font-size: 30px; "/>
 
-            <!-- the customisable left compartment -->
-            <p:layoutUnit position="west" size="250">
-                <ui:insert name="left"/>
+            <!-- the left compartment -->
+            <ui:insert name="left"/>
+
+
+            <!-- the footer -->
+            <p:layoutUnit position="south" size="80" style="text-align: center; ">
+                <div id="footer-links">
+                    <ui:insert name="footer-links"/>
+                </div>
+                
+                <div style="position: absolute; font-size: 90%; bottom: 0px; width: 100%;">
+                    <p style="margin-left: auto;margin-right: auto;">AIP Assignment 1 Chen Guo 11670179</p> 
+                </div>
             </p:layoutUnit>
 
-            <!-- the fixed footer -->
-            <p:layoutUnit position="south" size="50" style="text-align: center; ">
-                <h:outputText value="AIP Assignment 1 Chen Guo 11670179" style="font-size: 70%"/>
-            </p:layoutUnit>
-
-            <!-- the customisable center compartment -->
-            <p:layoutUnit position="center" styleClass="verticalCentreParent">
+            <!-- the center compartment -->
+            <p:layoutUnit position="center" styleClass="verticalCentreParent" >
                 <ui:insert name="center">center</ui:insert>
             </p:layoutUnit>
         </p:layout>

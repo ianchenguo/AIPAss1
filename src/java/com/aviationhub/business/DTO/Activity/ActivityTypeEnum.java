@@ -7,11 +7,19 @@
 package com.aviationhub.business.DTO.Activity;
 
 /**
- *
+ * An enum type defining known activity type
  * @author ian
  */
 public enum ActivityTypeEnum {
+
+    /**
+     * pilot training
+     */
     PILOTTRAINING("Pilot Training"),
+
+    /**
+     * joy flight
+     */
     JOYFLIGHT("Joy Flight");
     
     private final String typeAsString;

@@ -4,13 +4,15 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <!-- activity deletion page and activity detail page share the following sub template-->
     <ui:composition template="pagetemplate/readactivitytemplate.xhtml">
-
         <!--define meta data-->
         <ui:define name="metadata">
             <f:metadata><f:viewAction action="#{activityController.loadActivity(param.id,param.type)}"/></f:metadata>
         </ui:define>
         
+        <!-- define the page title -->
         <ui:define name="title">Activity Details</ui:define>
 
         <!-- define the center content title -->
@@ -18,7 +20,7 @@
             Activity Details
         </ui:define>
 
-        <!-- only need a place holder in this read-only page -->
+        <!-- only a place holder is needed in this section, because this page is read-only -->
         <ui:define name="form-button-action">
             <p><p:spacer width="10"/></p> 
         </ui:define>

@@ -9,7 +9,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- *
+ * An encryption class using SHA-256 algorithm, adapted from the tutorial instruction
+ * Reference:
+ * avilches 2010, 'How to encode a hex SHA256 in Java', 22 December, viewed 1 September 2014, <https://gist.github.com/avilches/750151>.
  * @author ian
  */
 public class Encryption {

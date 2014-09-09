@@ -16,7 +16,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
- *
+ * A concrete implementation of accountDAO for JavaDB
  * @author ian
  */
 class JavaDBAccountDAO implements Serializable,GenericDAO<AccountDTO,String> {
@@ -44,9 +44,6 @@ class JavaDBAccountDAO implements Serializable,GenericDAO<AccountDTO,String> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-
-
     @Override
     public AccountDTO findEntry(String username) throws NamingException, SQLException {
         DataSource ds = JavaDBDAOFactory.createDataSource();
@@ -57,12 +54,12 @@ class JavaDBAccountDAO implements Serializable,GenericDAO<AccountDTO,String> {
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    System.out.println("I FOUND A ROW!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    //System.out.println("I FOUND A ROW!!!!!!!!!!!!!!!!!!!!!!!!!");
                     // if find the user
                     return createDTO(rs);
                 } else {
                     // if cannot find the user
-                    System.out.println("I DIDN'T FIND A ROW!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    //System.out.println("I DIDN'T FIND A ROW!!!!!!!!!!!!!!!!!!!!!!!!!");
                     return null;
                 }
             }

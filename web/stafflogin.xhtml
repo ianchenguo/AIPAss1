@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <!-- this page uses the base layout template -->
+    <ui:composition template="./pagetemplate/layouttemplate.xhtml">
+
+        <!-- define the center content title -->
+        <ui:define name="title">
+            Administrator Login
+        </ui:define>
+        <!-- define the center content -->
+        <ui:define name="center">
+            <div style="margin: auto; width: 50%;">
+                <h1>Administrator Login</h1>
+                <p:panel style="min-width: 400px;">
+                    <!-- show global validation messages -->
+                    <p:messages />
+                    <!-- define a login form -->
+                    <h:form id="admin-login-form" >         
+                        <h:panelGrid columns="3" cellpadding="5">
+                            <p:outputLabel for="username" value="Username: "/>
+                            <p:inputText id="username" 
+                                         value="#{adminController.admin.username}"
+                                         required="true"
+                                         requiredMessage="Username cannot be empty"/>
+                            <p:watermark for="username" value="Enter username"/>
+
+                            <p:outputLabel for="password" value="Password: "/>
+                            <p:password id="password" 
+                                        value="#{adminController.admin.password}" 
+                                        required="true"
+                                        requiredMessage="Password cannot be empty"
+                                        label="Password" />
+                            <p:watermark for="password" value="Enter password"/>
+                            
+                            <p:spacer/>
+                            <p:commandButton id="submit" action="#{adminController.login()}" value="login" ajax="false" style="float: right;"/>
+                            <p:spacer/>
+                            <p:spacer/>
+                            <h:link id="Register" value="Register" outcome="registeradmin" style="font-size: 70%;float: right;"/>
+                        </h:panelGrid>
+                    </h:form><!--admin-login-form-->
+                </p:panel>
+            </div>
+        </ui:define>
+
+        <ui:define name="footer-links">
+            <h:link value="Index" outcome="index"/>
+        </ui:define>
+
+    </ui:composition>
+
+</html>

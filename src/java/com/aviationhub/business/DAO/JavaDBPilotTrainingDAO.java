@@ -21,7 +21,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
- *
+ * A concrete implementation of pilot training activity DAOs for JavaDB
  * @author ian
  */
 class JavaDBPilotTrainingDAO implements Serializable, GenericDAO<PilotTrainingDTO, Integer> {
@@ -123,7 +123,7 @@ class JavaDBPilotTrainingDAO implements Serializable, GenericDAO<PilotTrainingDT
             try (ResultSet keyResultSet = ps1.getGeneratedKeys()) {
                 if (keyResultSet.next()) {
                     activityID = (int) keyResultSet.getInt(1);
-                    System.out.println(activityID);
+                    //System.out.println(activityID);
                 }
             }
             //insert into the child table
